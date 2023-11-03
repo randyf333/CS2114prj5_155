@@ -1,9 +1,9 @@
 # CS2114prj5_155
  
 Team members:
-Randy Fu
-Ethan Brown
-Arav Singh
+Randy Fu - 7034532143
+Ethan Brown - 5712330078
+Arav Singh - 5713428107
 
 Communication plan: 
 Text
