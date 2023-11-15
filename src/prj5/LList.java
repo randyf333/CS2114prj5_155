@@ -1,4 +1,4 @@
-package linkedlist;
+package prj5;
 
 /**
  * This provides definitions for all of the methods necessary for a list

@@ -1,4 +1,4 @@
-package linkedlist;
+package prj5;
 
 /**
  * This is a basic implementation of a linked list
