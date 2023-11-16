@@ -19,7 +19,7 @@ package prj5;
  *            This is the type of object that this class will store
  */
 
-public class SinglyLinkedList<E>
+public class SinglyLinkedList<E extends Comparable<E>>
     implements LList<E>
 {
 
@@ -517,6 +517,40 @@ public class SinglyLinkedList<E>
         }
 
         return false;
+    }
+
+
+    /**
+     * Insertion sort of list
+     */
+    public void sort()
+    {
+        Node<E> sorted = null;
+        Node<E> curr = head;
+        while (curr != null)
+        {
+            Node<E> nextNode = curr.next;
+            if (sorted == null || sorted.data.compareTo(curr.data) >= 0)
+            {
+                curr.setNext(sorted);
+                sorted = curr;
+            }
+            else
+            {
+                Node<E> temp = sorted;
+                while (temp.next != null
+                    && temp.next.data.compareTo(curr.data) < 0)
+                {
+                    temp = temp.next;
+                }
+                curr.next = temp.next;
+                temp.next = curr;
+
+            }
+            curr = nextNode;
+        }
+        head = sorted;
+
     }
 
 }
