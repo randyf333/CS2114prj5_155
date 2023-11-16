@@ -137,7 +137,7 @@ public class InputFileReader
 
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * Calculates the traditional engagement rate
      * 
      * @param comments
      *            number of comments
@@ -155,7 +155,7 @@ public class InputFileReader
 
     // ----------------------------------------------------------
     /**
-     * Place a description of your method here.
+     * Calculates the reach engagement rate
      * 
      * @param comments
      *            number of comments
