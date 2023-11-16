@@ -296,33 +296,30 @@ public class SinglyLinkedList<E>
         {
             throw new IndexOutOfBoundsException("Index is out of bounds");
         }
-        else
+        if (index == 0)
         {
-            if (index == 0)
+            head = head.next;
+            size--;
+            return true;
+        }
+        Node<E> current = head;
+        int currentIndex = 0;
+
+        while (current.next != null)
+        {
+            if ((currentIndex + 1) == index)
             {
-                head = head.next;
+                Node<E> newNext = current.next.next;
+                current.setNext(newNext);
                 size--;
                 return true;
             }
-            Node<E> current = head;
-            int currentIndex = 0;
-
-            while (current.next != null)
-            {
-                if ((currentIndex + 1) == index)
-                {
-                    Node<E> newNext = current.next.next;
-                    current.setNext(newNext);
-                    size--;
-                    return true;
-                }
-                current = current.next;
-                currentIndex++;
-            }
-
-            // if the element was never found, this also handles empty case
-            throw new IndexOutOfBoundsException("Index is out of bounds");
+            current = current.next;
+            currentIndex++;
         }
+
+        // if the element was never found, this also handles empty case
+        throw new IndexOutOfBoundsException("Index is out of bounds");
     }
 
 

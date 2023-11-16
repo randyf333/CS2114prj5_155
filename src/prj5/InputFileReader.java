@@ -89,6 +89,10 @@ public class InputFileReader
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * parse through files
+     */
     public void parseFiles()
     {
         Scanner inStream = IOHelper.createScanner(inputFile);
@@ -117,7 +121,6 @@ public class InputFileReader
 
             // TODO : Populate the Classes created to store the data
 
-        }
 // int val = 0;
 // while (collectedValues.size() > val)
 // {
@@ -128,5 +131,42 @@ public class InputFileReader
 // }
 // val++;
 // }
+        }
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * 
+     * @param comments
+     *            number of comments
+     * @param likes
+     *            number of likes
+     * @param followers
+     *            number of followers
+     * @return Traditional Engagement Rate
+     */
+    public double calcTradRate(int comments, int likes, int followers)
+    {
+        return ((comments + likes) / followers) * 100;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * 
+     * @param comments
+     *            number of comments
+     * @param likes
+     *            number of likes
+     * @param views
+     *            number of views
+     * @return Engagement Rate by Reach
+     */
+    public double calcReachRate(int comments, int likes, int views)
+    {
+        return ((comments + likes) / views) * 100;
     }
 }
