@@ -2,7 +2,7 @@ package prj5;
 
 import cs1705.IOHelper;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
+// import java.util.ArrayList;
 import java.util.Scanner;
 
 // -------------------------------------------------------------------------
@@ -17,8 +17,8 @@ public class InputFileReader
 {
     // ~ Fields ................................................................
     private String inputFile;
-    private ArrayList<String> months;
-    private ArrayList<String> firstQuarter;
+    private String[] months;
+    private String[] firstQuarter;
 
     // ~ Constructors ..........................................................
     /**
@@ -31,23 +31,27 @@ public class InputFileReader
     public InputFileReader(String input)
     {
         inputFile = input;
-        months = new ArrayList<String>();
-        firstQuarter = new ArrayList<String>();
-        months.add("January");
-        months.add("February");
-        months.add("March");
-        months.add("April");
-        months.add("May");
-        months.add("June");
-        months.add("July");
-        months.add("August");
-        months.add("September");
-        months.add("October");
-        months.add("November");
-        months.add("December");
-        firstQuarter.add("January");
-        firstQuarter.add("February");
-        firstQuarter.add("March");
+        months = new String[] { "January", "February", "March", "April", "May",
+            "June", "July", "August", "September", "October", "November",
+            "December" };
+        months = new String[] { "January", "February", "March" };
+// months = new ArrayList<String>();
+// firstQuarter = new ArrayList<String>();
+// months.add("January");
+// months.add("February");
+// months.add("March");
+// months.add("April");
+// months.add("May");
+// months.add("June");
+// months.add("July");
+// months.add("August");
+// months.add("September");
+// months.add("October");
+// months.add("November");
+// months.add("December");
+// firstQuarter.add("January");
+// firstQuarter.add("February");
+// firstQuarter.add("March");
         parseFiles();
     }
 
@@ -87,7 +91,16 @@ public class InputFileReader
      */
     public boolean isValid(String[] values)
     {
-        return values.length == 10 && months.contains(values[0]);
+        boolean inMonths = false;
+        for (int x = 0; x < months.length; x++)
+        {
+            if (values[0].equals(months[x]))
+            {
+                inMonths = true;
+                break;
+            }
+        }
+        return values.length == 10 && inMonths;
     }
 
 
