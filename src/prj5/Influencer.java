@@ -151,9 +151,9 @@ public class Influencer
 
     // ----------------------------------------------------------
     /**
-     * Returns user name
+     * Returns list of entries
      * 
-     * @return user name
+     * @return list of entries
      */
     public ArrayList<Entry> getEntries()
     {
