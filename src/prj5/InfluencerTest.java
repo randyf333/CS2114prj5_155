@@ -27,6 +27,77 @@ public class InfluencerTest
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Tests the getTradEngagement method
+     */
+    public void testGetTradEngagement()
+    {
+        assertEquals(0, influencer.getTradEngagement(1), 0.01);
+        Entry entry1 = new Entry(
+            "January",
+            "User1",
+            "TestChannel",
+            "Country1",
+            "Topic1",
+            10,
+            5,
+            100,
+            20,
+            200);
+        Entry entry2 = new Entry(
+            "February",
+            "User2",
+            "TestChannel",
+            "Country2",
+            "Topic2",
+            20,
+            10,
+            150,
+            25,
+            250);
+        influencer.addEntry(entry1);
+        influencer.addEntry(entry2);
+        assertEquals(15.0, influencer.getTradEngagement(2), 0.01);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the getReachEngagement method
+     */
+    public void testGetReachEngagement()
+    {
+        assertEquals(0, influencer.getReachEngagement(1), 0.01);
+        Entry entry1 = new Entry(
+            "January",
+            "User1",
+            "TestChannel",
+            "Country1",
+            "Topic1",
+            10,
+            5,
+            100,
+            20,
+            200);
+        Entry entry2 = new Entry(
+            "February",
+            "User2",
+            "TestChannel",
+            "Country2",
+            "Topic2",
+            20,
+            10,
+            150,
+            25,
+            250);
+        influencer.addEntry(entry1);
+        influencer.addEntry(entry2);
+        assertEquals(20.0, influencer.getReachEngagement(2), 0.01);
+    }
+
+
+    // ----------------------------------------------------------
     /**
      * Tests the addEntry method
      */
@@ -81,15 +152,4 @@ public class InfluencerTest
         assertEquals(1, influencer.getEntries().size());
     }
 
-
-    // ----------------------------------------------------------
-    /**
-     * Tests the toString method
-     */
-    public void testToString()
-    {
-// return this.channelName + ", "
-// + this.getReachEngagement(this.getEntries().size());
-        System.out.println(influencer.toString());
-    }
 }
