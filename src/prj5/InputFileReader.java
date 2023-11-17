@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * This class is used to parse the input files
  * 
- * @author aravs
+ * @author Team 155
  * @version Nov 15, 2023
  */
 @SuppressWarnings("deprecation")
