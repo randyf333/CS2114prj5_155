@@ -505,12 +505,20 @@ public class SinglyLinkedListTest
      */
     public void testSort()
     {
-        SinglyLinkedList<Entry> e = new SinglyLinkedList<Entry>();
+        SinglyLinkedList<Influencer> e = new SinglyLinkedList<Influencer>();
         CompareByChannelName c = new CompareByChannelName();
-        e.add(new Entry("January", "c", "a", "a", "a", 1, 1, 1, 1, 1));
-        e.add(new Entry("Feburary", "a", "a", "a", "a", 1, 1, 1, 1, 1));
-        e.add(new Entry("March", "b", "a", "a", "a", 1, 1, 1, 1, 1));
-        
-        
+        Influencer first = new Influencer("a");
+        first.addEntry(new Entry("January", "c", "a", "a", "a", 1, 1, 1, 1, 1));
+        Influencer third = new Influencer("c");
+        third.addEntry(new Entry("March", "b", "c", "a", "a", 1, 1, 1, 1, 1));
+        Influencer sec = new Influencer("b");
+        sec.addEntry(new Entry("Feburary", "a", "b", "a", "a", 1, 1, 1, 1, 1));
+        e.add(first);
+        e.add(sec);
+        e.add(third);
+        e.sort(c);
+        assertEquals(first, e.get(0));
+        assertEquals(sec, e.get(1));
+        assertEquals(third, e.get(2));
     }
 }
