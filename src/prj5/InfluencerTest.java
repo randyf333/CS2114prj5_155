@@ -1,5 +1,7 @@
 package prj5;
 
+import student.TestCase;
+
 // -------------------------------------------------------------------------
 /**
  * Test methods for the Influencer class
@@ -8,7 +10,7 @@ package prj5;
  * @version Nov 17, 2023
  */
 public class InfluencerTest
-    extends student.TestCase
+    extends TestCase
 {
     // ~ Fields ................................................................
     private Influencer influencer;
