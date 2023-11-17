@@ -129,6 +129,7 @@ public class Influencer
      * adds entry to entries
      * 
      * @param e
+     *            Entry that is added
      */
     public void addEntry(Entry e)
     {
