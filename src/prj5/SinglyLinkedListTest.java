@@ -505,16 +505,12 @@ public class SinglyLinkedListTest
      */
     public void testSort()
     {
-//        emptyListA.sort();
-//        assertEquals("{}", emptyListA.toString());
-//        emptyListA.add("swimming");
-//        emptyListA.sort();
-//        assertEquals("{swimming}", emptyListA.toString());
-//        ascendingOrderList.sort();
-//        assertEquals("{1, 2, 3, 4, 5}", ascendingOrderList.toString());
-//        descendingOrderList.sort();
-//        assertEquals("{1, 2, 3, 4, 5}", descendingOrderList.toString());
-//        smallListA.sort();
-//        assertEquals("{gymnastics, soccer, swimming}", smallListA.toString());
+        SinglyLinkedList<Entry> e = new SinglyLinkedList<Entry>();
+        CompareByChannelName c = new CompareByChannelName();
+        e.add(new Entry("January", "c", "a", "a", "a", 1, 1, 1, 1, 1));
+        e.add(new Entry("Feburary", "a", "a", "a", "a", 1, 1, 1, 1, 1));
+        e.add(new Entry("March", "b", "a", "a", "a", 1, 1, 1, 1, 1));
+        
+        
     }
 }
