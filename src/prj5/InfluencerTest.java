@@ -1,5 +1,6 @@
 package prj5;
 
+import java.text.DecimalFormat;
 import student.TestCase;
 
 // -------------------------------------------------------------------------
@@ -27,6 +28,77 @@ public class InfluencerTest
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Tests the getTradEngagement method
+     */
+    public void testGetTradEngagement()
+    {
+        Entry entry1 = new Entry(
+            "January",
+            "channel",
+            "channel",
+            "Country1",
+            "Topic1",
+            10,
+            5,
+            100,
+            20,
+            200);
+        Entry entry2 = new Entry(
+            "February",
+            "channel",
+            "channel",
+            "Country1",
+            "Topic1",
+            80,
+            10,
+            150,
+            25,
+            250);
+
+        influencer.addEntry(entry1);
+        influencer.addEntry(entry2);
+        assertEquals(90, influencer.getTradEngagement(2), 0.01);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Tests the getReachEngagement method
+     */
+    public void testGetReachEngagement()
+    {
+        Entry entry1 = new Entry(
+            "January",
+            "channel",
+            "channel",
+            "Country1",
+            "Topic1",
+            10,
+            5,
+            100,
+            20,
+            200);
+        Entry entry2 = new Entry(
+            "February",
+            "channel",
+            "channel",
+            "Country1",
+            "Topic1",
+            80,
+            10,
+            150,
+            25,
+            250);
+
+        influencer.addEntry(entry1);
+        influencer.addEntry(entry2);
+        assertEquals(30, influencer.getReachEngagement(2), 0.01);
+    }
+
+
+    // ----------------------------------------------------------
     /**
      * Tests the addEntry method
      */
@@ -81,15 +153,4 @@ public class InfluencerTest
         assertEquals(1, influencer.getEntries().size());
     }
 
-
-    // ----------------------------------------------------------
-    /**
-     * Tests the toString method
-     */
-    public void testToString()
-    {
-// return this.channelName + ", "
-// + this.getReachEngagement(this.getEntries().size());
-        System.out.println(influencer.toString());
-    }
 }

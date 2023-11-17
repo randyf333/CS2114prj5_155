@@ -160,17 +160,4 @@ public class Influencer
         return this.entries;
     }
 
-
-    // ----------------------------------------------------------
-    /**
-     * Converts Influencer to string
-     * 
-     * @return string
-     */
-    @Override
-    public String toString()
-    {
-        return this.channelName + ", "
-            + this.getReachEngagement(this.getEntries().size());
-    }
 }
