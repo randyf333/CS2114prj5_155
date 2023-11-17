@@ -507,18 +507,32 @@ public class SinglyLinkedListTest
     {
         SinglyLinkedList<Influencer> e = new SinglyLinkedList<Influencer>();
         CompareByChannelName c = new CompareByChannelName();
+        CompareByTradEngagement d = new CompareByTradEngagement();
+        CompareByReachEngagement b = new CompareByReachEngagement();
         Influencer first = new Influencer("a");
-        first.addEntry(new Entry("January", "c", "a", "a", "a", 1, 1, 1, 1, 1));
+        first
+            .addEntry(new Entry("January", "a", "a", "a", "a", 0, 1, 1, 10, 9));
         Influencer third = new Influencer("c");
-        third.addEntry(new Entry("March", "b", "c", "a", "a", 1, 1, 1, 1, 1));
+        third.addEntry(new Entry("March", "c", "c", "c", "c", 0, 1, 1, 5, 1));
         Influencer sec = new Influencer("b");
-        sec.addEntry(new Entry("Feburary", "a", "b", "a", "a", 1, 1, 1, 1, 1));
+        sec.addEntry(new Entry("Feburary", "b", "b", "b", "b", 0, 1, 1, 7, 7));
         e.add(first);
         e.add(sec);
         e.add(third);
+        
         e.sort(c);
         assertEquals(first, e.get(0));
         assertEquals(sec, e.get(1));
         assertEquals(third, e.get(2));
+
+        e.sort(d);
+        assertEquals(third, e.get(0));
+        assertEquals(sec, e.get(1));
+        assertEquals(first, e.get(2));
+
+        e.sort(b);
+        assertEquals(third, e.get(0));
+        assertEquals(first, e.get(1));
+        assertEquals(sec, e.get(2));
     }
 }

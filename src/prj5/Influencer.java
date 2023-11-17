@@ -105,7 +105,7 @@ public class Influencer
         int views = 0;
 
         // Add comments, likes, and views from all entries
-        for (int i = 0; i < m; i++)
+        for (int i = 0; i < this.entries.size(); i++)
         {
             if (this.months.indexOf(this.entries.get(i).getMonth()) < m)
             {
