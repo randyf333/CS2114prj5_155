@@ -22,19 +22,22 @@ public class ProjectRunner
      * @param args
      *            Argument, if not empty, that contains the file needed to be
      *            parsed
+     * @throws IOException
      */
+    @SuppressWarnings("unused")
     public static void main(String[] args)
         throws IOException
     {
         InputFileReader filer;
+        filer = new InputFileReader("SampleInput1_2023.csv");
 
-        if (args.length > 0)
-        {
-            filer = new InputFileReader(args[0]);
-        }
-        else
-        {
-            filer = new InputFileReader("SampleInput1_2023.csv");
-        }
+//        if (args.length > 0)
+//        {
+//            filer = new InputFileReader(args[0]);
+//        }
+//        else
+//        {
+//            filer = new InputFileReader("SampleInput2_2023.csv");
+//        }
     }
 }

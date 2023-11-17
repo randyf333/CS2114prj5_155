@@ -1,6 +1,7 @@
 package prj5;
 
 import cs1705.IOHelper;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,6 +12,7 @@ import java.util.Scanner;
  * @author aravs
  * @version Nov 15, 2023
  */
+@SuppressWarnings("deprecation")
 public class InputFileReader
 {
     // ~ Fields ................................................................
@@ -97,7 +99,13 @@ public class InputFileReader
     {
         Scanner inStream = IOHelper.createScanner(inputFile);
         inStream.nextLine();
-        ArrayList<Object[]> collectedValues = new ArrayList<Object[]>();
+        SinglyLinkedList<Influencer> influencers =
+            new SinglyLinkedList<Influencer>();
+
+        CompareByChannelName nameComparer = new CompareByChannelName();
+        CompareByReachEngagement reComparer = new CompareByReachEngagement();
+        DecimalFormat df = new DecimalFormat("#.#");
+
         while (inStream.hasNextLine())
         {
             String line = inStream.nextLine().replaceAll(" ", "");
@@ -106,7 +114,7 @@ public class InputFileReader
             {
                 String month = values[0];
                 String username = values[1];
-                String channel = values[2];
+                String channelName = values[2];
                 String country = values[3];
                 String mainTopic = values[4];
                 int likes = toInt(values[5]);
@@ -114,23 +122,71 @@ public class InputFileReader
                 int followers = toInt(values[7]);
                 int comments = toInt(values[8]);
                 int views = toInt(values[9]);
-                collectedValues.add(
-                    new Object[] { month, username, channel, country, mainTopic,
-                        likes, posts, followers, comments, views });
+                Entry e = new Entry(
+                    month,
+                    username,
+                    channelName,
+                    country,
+                    mainTopic,
+                    likes,
+                    posts,
+                    followers,
+                    comments,
+                    views);
+
+                // Find the influencer the entry belongs to
+                boolean correctEntry = false;
+                for (int i = 0; i < influencers.size(); i++)
+                {
+                    if (e.getChannelName()
+                        .equals(influencers.get(i).getChannelName()))
+                    {
+                        correctEntry = true;
+                        influencers.get(i).addEntry(e);
+                        break;
+                    }
+                }
+
+                // make new influencer if not found
+                if (!correctEntry)
+                {
+                    influencers.add(new Influencer(e.getChannelName()));
+                    influencers.get(influencers.size() - 1).addEntry(e);
+                }
             }
+        }
 
-            // TODO : Populate the Classes created to store the data
+        int quarterLength = 3; // First quarter is the first 3 months
 
-// int val = 0;
-// while (collectedValues.size() > val)
-// {
-// Object[] v = collectedValues.get(val);
-// for (int x = 0; x < v.length; x++)
-// {
-// System.out.println(v[x]);
-// }
-// val++;
-// }
+        // OUTPUT PART 1: SORT BY NAME AND PRINT TRAD ENGAGEMENT
+        influencers.sort(nameComparer);
+
+        for (int i = 0; i < influencers.size(); i++)
+        {
+            Influencer inf = influencers.get(i); // this influencer
+
+            System.out.println(inf.getChannelName());
+            System.out.println(
+                "traditional: "
+                    + df.format(inf.getTradEngagement(quarterLength)));
+            System.out.println("==========");
+        }
+        
+        System.out.println("**********");
+        System.out.println("**********");
+        
+        // OUTPUT PART 2: SORT BY REACH ENGAGEMENT
+        influencers.sort(reComparer);
+
+        for (int i = 0; i < influencers.size(); i++)
+        {
+            Influencer inf = influencers.get(i); // this influencer
+
+            System.out.println(inf.getChannelName());
+            System.out.println(
+                "traditional: "
+                    + df.format(inf.getReachEngagement(quarterLength)));
+            System.out.println("==========");
         }
     }
 

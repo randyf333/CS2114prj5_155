@@ -1,5 +1,7 @@
 package prj5;
 
+import java.util.Comparator;
+
 /**
  * This is a basic implementation of a linked list
  *
@@ -19,7 +21,7 @@ package prj5;
  *            This is the type of object that this class will store
  */
 
-public class SinglyLinkedList<E extends Comparable<E>>
+public class SinglyLinkedList<E>
     implements LList<E>
 {
 
@@ -522,15 +524,18 @@ public class SinglyLinkedList<E extends Comparable<E>>
 
     /**
      * Insertion sort of list
+     * 
+     * @param c
+     *            comparator for sorting
      */
-    public void sort()
+    public void sort(Comparator<E> c)
     {
         Node<E> sorted = null;
         Node<E> curr = head;
         while (curr != null)
         {
             Node<E> nextNode = curr.next;
-            if (sorted == null || sorted.data.compareTo(curr.data) >= 0)
+            if (sorted == null || c.compare(sorted.data, curr.data) >= 0)
             {
                 curr.setNext(sorted);
                 sorted = curr;
@@ -539,7 +544,7 @@ public class SinglyLinkedList<E extends Comparable<E>>
             {
                 Node<E> temp = sorted;
                 while (temp.next != null
-                    && temp.next.data.compareTo(curr.data) < 0)
+                    && c.compare(temp.next.data, curr.data) < 0)
                 {
                     temp = temp.next;
                 }
