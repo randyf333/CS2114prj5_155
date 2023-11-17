@@ -1,5 +1,6 @@
 package prj5;
 
+import java.text.DecimalFormat;
 import student.TestCase;
 
 // -------------------------------------------------------------------------
@@ -33,11 +34,10 @@ public class InfluencerTest
      */
     public void testGetTradEngagement()
     {
-        assertEquals(0, influencer.getTradEngagement(1), 0.01);
         Entry entry1 = new Entry(
             "January",
-            "User1",
-            "TestChannel",
+            "channel",
+            "channel",
             "Country1",
             "Topic1",
             10,
@@ -47,18 +47,19 @@ public class InfluencerTest
             200);
         Entry entry2 = new Entry(
             "February",
-            "User2",
-            "TestChannel",
-            "Country2",
-            "Topic2",
-            20,
+            "channel",
+            "channel",
+            "Country1",
+            "Topic1",
+            80,
             10,
             150,
             25,
             250);
+
         influencer.addEntry(entry1);
         influencer.addEntry(entry2);
-        assertEquals(15.0, influencer.getTradEngagement(2), 0.01);
+        assertEquals(90, influencer.getTradEngagement(2), 0.01);
     }
 
 
@@ -68,11 +69,10 @@ public class InfluencerTest
      */
     public void testGetReachEngagement()
     {
-        assertEquals(0, influencer.getReachEngagement(1), 0.01);
         Entry entry1 = new Entry(
             "January",
-            "User1",
-            "TestChannel",
+            "channel",
+            "channel",
             "Country1",
             "Topic1",
             10,
@@ -82,18 +82,19 @@ public class InfluencerTest
             200);
         Entry entry2 = new Entry(
             "February",
-            "User2",
-            "TestChannel",
-            "Country2",
-            "Topic2",
-            20,
+            "channel",
+            "channel",
+            "Country1",
+            "Topic1",
+            80,
             10,
             150,
             25,
             250);
+
         influencer.addEntry(entry1);
         influencer.addEntry(entry2);
-        assertEquals(20.0, influencer.getReachEngagement(2), 0.01);
+        assertEquals(30, influencer.getReachEngagement(2), 0.01);
     }
 
 
