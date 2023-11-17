@@ -81,7 +81,7 @@ public class EntryTest extends TestCase
     /**
      * Test getViews method
      */
-    public void getViews() {
+    public void testGetViews() {
         assertEquals(5, entry.getViews());
     }
 }

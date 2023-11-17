@@ -18,7 +18,6 @@ public class InputFileReader
     // ~ Fields ................................................................
     private String inputFile;
     private String[] months;
-    private String[] firstQuarter;
 
     // ~ Constructors ..........................................................
     /**
