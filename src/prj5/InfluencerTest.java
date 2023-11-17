@@ -1,6 +1,5 @@
 package prj5;
 
-import java.text.DecimalFormat;
 import student.TestCase;
 
 // -------------------------------------------------------------------------

@@ -27,8 +27,7 @@ public class CompareByTradEngagement
     @Override
     public int compare(Influencer i1, Influencer i2)
     {
-        return (int)i1.getTradEngagement(3)
-            - (int)i2.getTradEngagement(3);
+        return (int)i1.getTradEngagement(3) - (int)i2.getTradEngagement(3);
     }
 
 }

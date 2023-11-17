@@ -20,8 +20,6 @@ public class SinglyLinkedListTest
     private SinglyLinkedList<String> bigListA;
     private SinglyLinkedList<String> bigListB;
     private String nullObject;
-    private SinglyLinkedList<String> ascendingOrderList;
-    private SinglyLinkedList<String> descendingOrderList;
 
     /**
      * Initializes 2 empty lists, 2 lists with a small number of items, and 2
@@ -58,18 +56,6 @@ public class SinglyLinkedListTest
 
         // to be explicit
         nullObject = null;
-
-        ascendingOrderList = new SinglyLinkedList<>();
-        for (int i = 1; i <= 5; i++)
-        {
-            ascendingOrderList.add(String.valueOf(i));
-        }
-
-        descendingOrderList = new SinglyLinkedList<>();
-        for (int i = 5; i >= 1; i--)
-        {
-            descendingOrderList.add(String.valueOf(i));
-        }
     }
 
 
@@ -519,7 +505,7 @@ public class SinglyLinkedListTest
         e.add(first);
         e.add(sec);
         e.add(third);
-        
+
         e.sort(c);
         assertEquals(first, e.get(0));
         assertEquals(sec, e.get(1));
