@@ -166,15 +166,25 @@ public class InputFileReader
             Influencer inf = influencers.get(i); // this influencer
 
             System.out.println(inf.getChannelName());
-            System.out.println(
-                "traditional: "
-                    + df.format(inf.getTradEngagement(quarterLength)));
+
+            // handle division by 0 in calculation
+            if (inf.getTradEngagement(quarterLength) <= 0)
+            {
+                System.out.println("traditonal: N/A");
+            }
+            else
+            {
+                System.out.println(
+                    "traditional: "
+                        + df.format(inf.getTradEngagement(quarterLength)));
+            }
+
             System.out.println("==========");
         }
-        
+
         System.out.println("**********");
         System.out.println("**********");
-        
+
         // OUTPUT PART 2: SORT BY REACH ENGAGEMENT
         influencers.sort(reComparer);
 
@@ -183,9 +193,19 @@ public class InputFileReader
             Influencer inf = influencers.get(i); // this influencer
 
             System.out.println(inf.getChannelName());
-            System.out.println(
-                "traditional: "
-                    + df.format(inf.getReachEngagement(quarterLength)));
+
+            // handle division by 0 in calculation
+            if (inf.getReachEngagement(quarterLength) <= 0)
+            {
+                System.out.println("reach: N/A");
+            }
+            else
+            {
+                System.out.println(
+                    "reach: "
+                        + df.format(inf.getReachEngagement(quarterLength)));
+            }
+
             System.out.println("==========");
         }
     }
