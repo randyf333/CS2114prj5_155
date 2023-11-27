@@ -34,24 +34,6 @@ public class InputFileReader
             "June", "July", "August", "September", "October", "November",
             "December" };
         months = new String[] { "January", "February", "March" };
-// months = new ArrayList<String>();
-// firstQuarter = new ArrayList<String>();
-// months.add("January");
-// months.add("February");
-// months.add("March");
-// months.add("April");
-// months.add("May");
-// months.add("June");
-// months.add("July");
-// months.add("August");
-// months.add("September");
-// months.add("October");
-// months.add("November");
-// months.add("December");
-// firstQuarter.add("January");
-// firstQuarter.add("February");
-// firstQuarter.add("March");
-        parseFiles();
     }
 
 
