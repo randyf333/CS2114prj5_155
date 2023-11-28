@@ -35,15 +35,31 @@ public class ProjectRunner
     public static void main(String[] args)
         throws IOException
     {
-        InputFileReader filer;
-
-        if (args.length > 0)
+        boolean showConsole = false;
+        boolean showGUI = true;
+        if (showConsole)
         {
-            filer = new InputFileReader(args[0]);
+            InputFileReader filer;
+            if (args.length > 0)
+            {
+                filer = new InputFileReader(args[0]);
+            }
+            else
+            {
+                filer = new InputFileReader("SampleInput1_2023.csv");
+            }
         }
-        else
+        if (showGUI)
         {
-            filer = new InputFileReader("SampleInput1_2023.csv");
+            InfluencerWindow window;
+            if (args.length > 0)
+            {
+                window = new InfluencerWindow(args[0]);
+            }
+            else
+            {
+                window = new InfluencerWindow("SampleInput1_2023.csv");
+            }
         }
     }
 }
