@@ -2,6 +2,7 @@ package prj5;
 
 import cs2.Button;
 import cs2.Shape;
+import cs2.TextShape;
 import cs2.Window;
 import cs2.WindowSide;
 import java.awt.*;
@@ -21,12 +22,26 @@ public class InfluencerWindow
     private Button quit;
     private Button sortReach;
     private Button sortTrad;
-    private Button sortChannel;
+    private Button sortInfluencer;
     private Button sortEngage;
     private Button jan;
     private Button feb;
     private Button march;
     private Button firstQ;
+    private Shape[] influencerBars;
+    private TextShape[] influencerNames;
+    private TextShape[] influencerValues;
+    private String[] engagmentSortType;
+    private String[] time;
+    private String[] engagmentType;
+    private TextShape engagmentSortText;
+    private TextShape timeText;
+    private TextShape engagmentTypeText;
+    private Color[] influencerColor;
+    public static final int MARGIN = 50;
+    public static final int TEXT_SIZE = 20;
+    public static final int BAR_WIDTH = 20;
+    public static final double HEIGHT_MULTIPLIER = 1;
 
     // ~ Constructors ..........................................................
     /**
@@ -39,6 +54,42 @@ public class InfluencerWindow
     public InfluencerWindow(String i)
     {
         input = new InputFileReader(i);
+        quit = new Button("Quit");
+        sortInfluencer = new Button("Sort by Channel Name");
+        sortEngage = new Button("Sort by Engagment Rate");
+        sortTrad = new Button("Traditional Engagment Rate");
+        sortReach = new Button("Reach Engagment Rate");
+        jan = new Button("January");
+        feb = new Button("February");
+        march = new Button("March");
+        firstQ = new Button("First Quarter (Jan - March)");
+        quit.onClick(this, "clickedQuit");
+        sortInfluencer.onClick(this, "clickedSortInfluencer");
+        sortEngage.onClick(this, "clickedSortEngage");
+        sortTrad.onClick(this, "clickedTradEngagment");
+        sortReach.onClick(this, "clickedReachEngagment");
+        jan.onClick(this, "clickedJanuary");
+        feb.onClick(this, "clickedFebruary");
+        march.onClick(this, "clickedMarch");
+        firstQ.onClick(this, "clickedFirstQuarter");
+        window.addButton(sortInfluencer, WindowSide.NORTH);
+        window.addButton(sortEngage, WindowSide.NORTH);
+        window.addButton(quit, WindowSide.NORTH);
+        window.addButton(sortTrad, WindowSide.WEST);
+        window.addButton(sortReach, WindowSide.WEST);
+        window.addButton(jan, WindowSide.SOUTH);
+        window.addButton(feb, WindowSide.SOUTH);
+        window.addButton(march, WindowSide.SOUTH);
+        window.addButton(firstQ, WindowSide.SOUTH);
+        time = new String[] { "January", "February", "March",
+            "First Quarter (Jan - March)" };
+        engagmentSortType = new String[] { "Traditional Engagment Rate",
+            "Reach Engagment Rate" };
+        engagmentType = new String[] { "Sorting by Channel Name",
+            "Sorting by Engagment Rate" };
+        timeText = new TextShape(300, 100, "temporary");
+        engagmentSortText = new TextShape(300, 120, "tempor");
+        engagmentTypeText = new TextShape(300, 140, "temp");
     }
 
 
@@ -53,5 +104,53 @@ public class InfluencerWindow
     public void clickedQuit(Button button)
     {
         System.exit(0);
+    }
+
+
+    public void clickedSortInfluencer()
+    {
+
+    }
+
+
+    public void clickedSortEngage()
+    {
+
+    }
+
+
+    public void clickedTradEngagment()
+    {
+
+    }
+
+
+    public void clickedReachEngagment()
+    {
+
+    }
+
+
+    public void clickedJanuary()
+    {
+
+    }
+
+
+    public void clickedFebruary()
+    {
+
+    }
+
+
+    public void clickedMarch()
+    {
+
+    }
+
+
+    public void clickedFirstQuarter()
+    {
+
     }
 }
