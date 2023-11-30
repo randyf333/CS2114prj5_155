@@ -107,49 +107,105 @@ public class InfluencerWindow
     }
 
 
-    public void clickedSortInfluencer()
+    // ----------------------------------------------------------
+    /**
+     * Button method to sort by channel name
+     * 
+     * @param button
+     *            button clicked
+     */
+    public void clickedSortInfluencer(Button button)
     {
 
     }
 
 
-    public void clickedSortEngage()
+    // ----------------------------------------------------------
+    /**
+     * Button method to sort by engagement rate
+     * 
+     * @param button
+     *            button clicked
+     */
+    public void clickedSortEngage(Button button)
     {
 
     }
 
 
-    public void clickedTradEngagment()
+    // ----------------------------------------------------------
+    /**
+     * Button method to sort by traditional engagement rate
+     * 
+     * @param button
+     *            button clicked
+     */
+    public void clickedTradEngagment(Button button)
     {
 
     }
 
 
-    public void clickedReachEngagment()
+    // ----------------------------------------------------------
+    /**
+     * Button method to sort by reach engagement rate
+     * 
+     * @param button
+     *            button clicked
+     */
+    public void clickedReachEngagment(Button button)
     {
 
     }
 
 
-    public void clickedJanuary()
+    // ----------------------------------------------------------
+    /**
+     * Get only january data
+     * 
+     * @param button
+     *            button clicked
+     */
+    public void clickedJanuary(Button button)
     {
 
     }
 
 
-    public void clickedFebruary()
+    // ----------------------------------------------------------
+    /**
+     * Get only Feb data
+     * 
+     * @param button
+     *            button clicked
+     */
+    public void clickedFebruary(Button button)
     {
 
     }
 
 
-    public void clickedMarch()
+    // ----------------------------------------------------------
+    /**
+     * Get only March data
+     * 
+     * @param button
+     *            button clicked
+     */
+    public void clickedMarch(Button button)
     {
 
     }
 
 
-    public void clickedFirstQuarter()
+    // ----------------------------------------------------------
+    /**
+     * Get first quarter data
+     * 
+     * @param button
+     *            button clicked
+     */
+    public void clickedFirstQuarter(Button button)
     {
 
     }
