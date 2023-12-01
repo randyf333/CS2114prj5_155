@@ -6,6 +6,7 @@ import cs2.TextShape;
 import cs2.Window;
 import cs2.WindowSide;
 import java.awt.*;
+import student.TestableRandom;
 
 // -------------------------------------------------------------------------
 /**
@@ -352,9 +353,30 @@ public class InfluencerWindow
     }
 
 
-    public void drawInfluencer(String name, float rate, int pos)
+    // ----------------------------------------------------------
+    /**
+     * Helper method to draw for update
+     * 
+     * @param name
+     *            name of influencer
+     * @param rate
+     *            data
+     * @param pos
+     *            position of bar
+     */
+    public void drawInfluencer(String name, double rate, int pos)
     {
-        int x = pos;
+        TestableRandom randomGen = new TestableRandom();
+        int red = randomGen.nextInt(256);
+        int green = randomGen.nextInt(256);
+        int blue = randomGen.nextInt(256);
+        Shape bar = new Shape(
+            100 + 200 * pos,
+            50,
+            75,
+            25 * (int)rate,
+            new Color(red, green, blue));
+        window.addShape(bar);
     }
 
 }
