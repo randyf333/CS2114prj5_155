@@ -4,12 +4,12 @@ import java.util.Comparator;
 
 // -------------------------------------------------------------------------
 /**
- * Comparator object to compare two Influencer objects by ChannelName
+ * Comparator object to compare two Influencer objects by Feb
  * 
- * @author ethan
- * @version Nov 16, 2023
+ * @author randy
+ * @version Dec 1, 2023
  */
-public class CompareByTradEngagement
+public class CompareByTradEngFeb
     implements Comparator<Influencer>
 {
     /**
@@ -27,7 +27,8 @@ public class CompareByTradEngagement
     @Override
     public int compare(Influencer i1, Influencer i2)
     {
-        return (int)i1.getTradEngagement(1, 3) - (int)i2.getTradEngagement(1, 3);
+        return (int)i1.getTradEngagement(2, 2)
+            - (int)i2.getTradEngagement(2, 2);
     }
 
 }

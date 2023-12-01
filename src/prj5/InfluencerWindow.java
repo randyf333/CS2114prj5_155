@@ -170,7 +170,24 @@ public class InfluencerWindow
     {
         tradRate = true;
         reachRate = false;
-        influencers.sort(new CompareByTradEngagement());
+        switch (this.month)
+        {
+            case 0:
+                influencers.sort(new CompareByTradEngagementMonth());
+                break;
+            case 1:
+                influencers.sort(new CompareByTradEngJan());
+                break;
+            case 2:
+                influencers.sort(new CompareByTradEngFeb());
+                break;
+            case 3:
+                influencers.sort(new CompareByTradEngMar());
+                break;
+            default:
+                influencers.sort(new CompareByTradEngJan());
+                break;
+        }
         update();
     }
 
@@ -186,7 +203,24 @@ public class InfluencerWindow
     {
         reachRate = true;
         tradRate = false;
-        influencers.sort(new CompareByReachEngagement());
+        switch (this.month)
+        {
+            case 0:
+                influencers.sort(new CompareByReachEngagement());
+                break;
+            case 1:
+                influencers.sort(new CompareByReachJan());
+                break;
+            case 2:
+                influencers.sort(new CompareByReachFeb());
+                break;
+            case 3:
+                influencers.sort(new CompareByReachMar());
+                break;
+            default:
+                influencers.sort(new CompareByReachJan());
+                break;
+        }
         update();
     }
 
@@ -417,14 +451,23 @@ public class InfluencerWindow
                 window.getGraphPanelHeight() - 30,
                 "" + df.format(rate)));
     }
-    
+
+
     private void drawText()
     {
         String monthText = "";
         String rateType = "";
         String sortType = "";
+<<<<<<< Updated upstream
         
         switch (this.month) {
+=======
+
+        switch (this.month)
+        {
+            case 0:
+                monthText = "First Quarter (Jan-March)";
+>>>>>>> Stashed changes
             case 1:
                 monthText = "January";
                 break;
@@ -455,11 +498,15 @@ public class InfluencerWindow
         {
             sortType = "Sorting by Engagement Rate";
         }
-        
+
         window.addShape(new TextShape(10, 20, monthText));
+<<<<<<< Updated upstream
         window.addShape(new TextShape(10, 40, rateType));
         window.addShape(new TextShape(10, 60, sortType));
             
+=======
+
+>>>>>>> Stashed changes
     }
 
 }
