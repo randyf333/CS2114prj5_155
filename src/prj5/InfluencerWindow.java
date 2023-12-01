@@ -238,4 +238,15 @@ public class InfluencerWindow
         month = 0;
         // add update method here;
     }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Updates the window based on themost recent button clicks
+     */
+    public void update()
+    {
+
+    }
+
 }
