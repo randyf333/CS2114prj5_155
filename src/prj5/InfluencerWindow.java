@@ -259,14 +259,11 @@ public class InfluencerWindow
     public void update()
     {
         window.removeAllShapes();
-        CompareByChannelName nameComparer = new CompareByChannelName();
-        CompareByReachEngagement reComparer = new CompareByReachEngagement();
 
         if (month == 0)
         {
             if (sortC)
             {
-                influencers.sort(nameComparer);
                 for (int i = 0; i < influencers.size(); i++)
                 {
                     Influencer inf = influencers.get(i); // this influencer
@@ -281,13 +278,12 @@ public class InfluencerWindow
                     {
                         rateToDisplay = inf.getReachEngagement(1, 3);
                     }
-                    drawInfluencer(nameOfChannel, rateToDisplay, i);
+                    drawInfluencer(nameOfChannel, rateToDisplay, 4-i);
                 }
 
             }
             else
             {
-                influencers.sort(reComparer);
                 for (int i = 0; i < influencers.size(); i++)
                 {
                     Influencer inf = influencers.get(i); // this influencer
@@ -302,7 +298,7 @@ public class InfluencerWindow
                     {
                         rateToDisplay = inf.getReachEngagement(1, 3);
                     }
-                    drawInfluencer(nameOfChannel, rateToDisplay, i);
+                    drawInfluencer(nameOfChannel, rateToDisplay, 4-i);
                 }
             }
         }
@@ -310,7 +306,6 @@ public class InfluencerWindow
         {
             if (sortC)
             {
-                influencers.sort(nameComparer);
                 for (int i = 0; i < influencers.size(); i++)
                 {
                     Influencer inf = influencers.get(i); // this influencer
@@ -325,13 +320,12 @@ public class InfluencerWindow
                     {
                         rateToDisplay = inf.getReachEngagement(month, month);
                     }
-                    drawInfluencer(nameOfChannel, rateToDisplay, i);
+                    drawInfluencer(nameOfChannel, rateToDisplay, 4-i);
                 }
 
             }
             else
             {
-                influencers.sort(reComparer);
                 for (int i = 0; i < influencers.size(); i++)
                 {
                     Influencer inf = influencers.get(i); // this influencer
@@ -346,7 +340,7 @@ public class InfluencerWindow
                     {
                         rateToDisplay = inf.getReachEngagement(month, month);
                     }
-                    drawInfluencer(nameOfChannel, rateToDisplay, i);
+                    drawInfluencer(nameOfChannel, rateToDisplay, 4-i);
                 }
             }
 
@@ -371,13 +365,16 @@ public class InfluencerWindow
         int red = randomGen.nextInt(256);
         int green = randomGen.nextInt(256);
         int blue = randomGen.nextInt(256);
-        int barHeight = 25 * (int)rate;
+        int barHeight = 1 * (int)rate;
+        int x = 20 + 50 * pos;
+        
         Shape bar = new Shape(
-            100 + 200 * pos,
+            x,
             window.getGraphPanelHeight() - 75 - barHeight,
             25,
             barHeight,
             new Color(red, green, blue));
+        window.addShape(new TextShape(x, window.getGraphPanelHeight() - 50, name));
         window.addShape(bar);
     }
 
