@@ -364,7 +364,7 @@ public class InfluencerWindow
      * @param pos
      *            position of bar
      */
-    public void drawInfluencer(String name, double rate, int pos)
+    private void drawInfluencer(String name, double rate, int pos)
     {
         TestableRandom randomGen = new TestableRandom();
         int red = randomGen.nextInt(256);
@@ -372,7 +372,7 @@ public class InfluencerWindow
         int blue = randomGen.nextInt(256);
         Shape bar = new Shape(
             100 + 200 * pos,
-            50,
+            window.getGraphPanelHeight() - 50,
             75,
             25 * (int)rate,
             new Color(red, green, blue));
