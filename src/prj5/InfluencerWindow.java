@@ -37,9 +37,9 @@ public class InfluencerWindow
     private String[] engagmentSortType;
     private String[] time;
     private String[] engagmentType;
-    private TextShape engagmentSortText;
+    private TextShape engTypeText;
     private TextShape timeText;
-    private TextShape engagmentTypeText;
+    private TextShape sortTypeText;
     private Color[] influencerColor;
     private int month;
     private boolean tradRate;
@@ -103,20 +103,13 @@ public class InfluencerWindow
         window.addButton(march, WindowSide.SOUTH);
         window.addButton(firstQ, WindowSide.SOUTH);
 
-        time = new String[] { "January", "February", "March",
-            "First Quarter (Jan - March)" };
-        engagmentSortType = new String[] { "Traditional Engagment Rate",
-            "Reach Engagment Rate" };
-        engagmentType = new String[] { "Sorting by Channel Name",
-            "Sorting by Engagment Rate" };
-
-        timeText = new TextShape(300, 100, "temporary");
-        engagmentSortText = new TextShape(300, 120, "tempor");
-        engagmentTypeText = new TextShape(300, 140, "temp");
+        timeText = new TextShape(300, 100, "None");
+        engTypeText = new TextShape(300, 120, "None");
+        sortTypeText = new TextShape(300, 140, "None");
 
         window.addShape(timeText);
-        window.addShape(engagmentSortText);
-        window.addShape(engagmentTypeText);
+        window.addShape(engTypeText);
+        window.addShape(sortTypeText);
     }
 
 
@@ -379,6 +372,29 @@ public class InfluencerWindow
                 x,
                 window.getGraphPanelHeight() - 30,
                 "" + df.format(rate)));
+    }
+    
+    private void drawText()
+    {
+        String monthText = "";
+        String rateType = "";
+        String sortType = "";
+        
+        switch (this.month) {
+            case 0:
+                monthText = "First Quarter (Jan-March)";
+            case 1:
+                monthText = "January";
+            case 2:
+                monthText = "February";
+            case 3:
+                monthText = "March";
+            default:
+                monthText = "None";
+        }
+        
+        window.addShape(new TextShape(10, 20, monthText));
+            
     }
 
 }
