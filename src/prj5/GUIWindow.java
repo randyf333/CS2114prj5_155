@@ -366,8 +366,6 @@ public class GUIWindow
             end = month;
         }
 
-        System.out.println(influencers.size());
-
         for (int i = 0; i < influencers.size(); i++)
         {
             Influencer inf = influencers.get(i);
