@@ -111,7 +111,7 @@ public class InfluencerWindow
         timeText = new TextShape(300, 100, "temporary");
         engagmentSortText = new TextShape(300, 120, "tempor");
         engagmentTypeText = new TextShape(300, 140, "temp");
-        
+
         window.addShape(timeText);
         window.addShape(engagmentSortText);
         window.addShape(engagmentTypeText);
@@ -257,9 +257,101 @@ public class InfluencerWindow
      */
     public void update()
     {
+        CompareByChannelName nameComparer = new CompareByChannelName();
+        CompareByReachEngagement reComparer = new CompareByReachEngagement();
 
+        if (month == 0)
+        {
+            if (sortC)
+            {
+                influencers.sort(nameComparer);
+                for (int i = 0; i < influencers.size(); i++)
+                {
+                    Influencer inf = influencers.get(i); // this influencer
+                    String nameOfChannel = inf.getChannelName();
+                    float rateToDisplay = (float)0.0;
+                    // handle division by 0 in calculation
+                    if (tradRate && inf.getTradEngagement(1, 3) > 0)
+                    {
+                        rateToDisplay = inf.getTradEngagement(1, 3);
+                    }
+                    if (reachRate && inf.getReachEngagement(1, 3) > 0)
+                    {
+                        rateToDisplay = inf.getReachEngagement(1, 3);
+                    }
+                    drawInfluencer(nameOfChannel, rateToDisplay, i);
+                }
+
+            }
+            else
+            {
+                influencers.sort(reComparer);
+                for (int i = 0; i < influencers.size(); i++)
+                {
+                    Influencer inf = influencers.get(i); // this influencer
+                    String nameOfChannel = inf.getChannelName();
+                    float rateToDisplay = (float)0.0;
+                    // handle division by 0 in calculation
+                    if (tradRate && inf.getTradEngagement(1, 3) > 0)
+                    {
+                        rateToDisplay = inf.getTradEngagement(1, 3);
+                    }
+                    if (reachRate && inf.getReachEngagement(1, 3) > 0)
+                    {
+                        rateToDisplay = inf.getReachEngagement(1, 3);
+                    }
+                    drawInfluencer(nameOfChannel, rateToDisplay, i);
+                }
+            }
+        }
+        else
+        {
+            if (sortC)
+            {
+                influencers.sort(nameComparer);
+                for (int i = 0; i < influencers.size(); i++)
+                {
+                    Influencer inf = influencers.get(i); // this influencer
+                    String nameOfChannel = inf.getChannelName();
+                    float rateToDisplay = (float)0.0;
+                    // handle division by 0 in calculation
+                    if (tradRate && inf.getTradEngagement(month, month) > 0)
+                    {
+                        rateToDisplay = inf.getTradEngagement(month, month);
+                    }
+                    if (reachRate && inf.getReachEngagement(month, month) > 0)
+                    {
+                        rateToDisplay = inf.getReachEngagement(month, month);
+                    }
+                    drawInfluencer(nameOfChannel, rateToDisplay, i);
+                }
+
+            }
+            else
+            {
+                influencers.sort(reComparer);
+                for (int i = 0; i < influencers.size(); i++)
+                {
+                    Influencer inf = influencers.get(i); // this influencer
+                    String nameOfChannel = inf.getChannelName();
+                    float rateToDisplay = (float)0.0;
+                    // handle division by 0 in calculation
+                    if (tradRate && inf.getTradEngagement(month, month) > 0)
+                    {
+                        rateToDisplay = inf.getTradEngagement(month, month);
+                    }
+                    if (reachRate && inf.getReachEngagement(month, month) > 0)
+                    {
+                        rateToDisplay = inf.getReachEngagement(month, month);
+                    }
+                    drawInfluencer(nameOfChannel, rateToDisplay, i);
+                }
+            }
+
+        }
     }
-    
+
+
     public void drawInfluencer(String name, float rate, int pos)
     {
         int x = pos;
