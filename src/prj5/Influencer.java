@@ -51,8 +51,10 @@ public class Influencer
     /**
      * calculates engagement by reach
      * 
-     * @param m
-     *            months since January to be calculated
+     * @param start
+     *            start month index
+     * @param end
+     *            end month index
      * @return reach engagement
      */
     public float getTradEngagement(int start, int end)
@@ -74,7 +76,9 @@ public class Influencer
         // Add comments, likes, and views from all entries
         for (int i = 0; i < this.entries.size(); i++)
         {
-            if (this.months.indexOf(this.entries.get(i).getMonth()) < end && this.months.indexOf(this.entries.get(i).getMonth()) >= start - 1)
+            if (this.months.indexOf(this.entries.get(i).getMonth()) < end
+                && this.months.indexOf(this.entries.get(i).getMonth()) >= start
+                    - 1)
             {
                 comments += this.entries.get(i).getComments();
                 likes += this.entries.get(i).getLikes();
@@ -94,8 +98,10 @@ public class Influencer
     /**
      * calculates engagement by reach
      * 
-     * @param m
-     *            months since January to be calculated
+     * @param start
+     *            start month index
+     * @param end
+     *            end month index
      * @return reach engagement
      */
     public float getReachEngagement(int start, int end)
@@ -107,7 +113,9 @@ public class Influencer
         // Add comments, likes, and views from all entries
         for (int i = 0; i < this.entries.size(); i++)
         {
-            if (this.months.indexOf(this.entries.get(i).getMonth()) < end && this.months.indexOf(this.entries.get(i).getMonth()) >= start - 1)
+            if (this.months.indexOf(this.entries.get(i).getMonth()) < end
+                && this.months.indexOf(this.entries.get(i).getMonth()) >= start
+                    - 1)
             {
                 comments += this.entries.get(i).getComments();
                 likes += this.entries.get(i).getLikes();

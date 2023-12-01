@@ -13,7 +13,7 @@ import java.text.DecimalFormat;
 /**
  * The main front-end work and the view for the Influencer statistics
  * 
- * @author aravs
+ * @author arav singh, ethan brown, randy fu
  * @version Nov 27, 2023
  */
 public class InfluencerWindow
@@ -31,25 +31,9 @@ public class InfluencerWindow
     private Button march;
     private Button firstQ;
     private SinglyLinkedList<Influencer> influencers;
-    private Shape[] influencerBars;
-    private TextShape[] influencerNames;
-    private TextShape[] influencerValues;
-    private String[] engagmentSortType;
-    private String[] time;
-    private String[] engagmentType;
-    private TextShape engTypeText;
-    private TextShape timeText;
-    private TextShape sortTypeText;
-    private Color[] influencerColor;
     private int month;
     private boolean tradRate;
-    private boolean reachRate;
     private boolean sortC;
-    private boolean sortE;
-    public static final int MARGIN = 50;
-    public static final int TEXT_SIZE = 20;
-    public static final int BAR_WIDTH = 20;
-    public static final double HEIGHT_MULTIPLIER = 1;
 
     // ~ Constructors ..........................................................
     /**
@@ -63,9 +47,7 @@ public class InfluencerWindow
     {
         this.window = new Window("Social Media Vis");
         tradRate = false;
-        reachRate = true;
         sortC = false;
-        sortE = true;
         month = 0;
         input = new InputFileReader(i);
         influencers = input.parseFiles();
@@ -185,7 +167,7 @@ public class InfluencerWindow
                     influencers.sort(new CompareByReachJan());
             }
         }
-        
+
         update();
     }
 
@@ -200,7 +182,7 @@ public class InfluencerWindow
     public void clickedTradEngagment(Button button)
     {
         tradRate = true;
-        
+
         if (!sortC)
         {
             switch (this.month)
@@ -221,7 +203,7 @@ public class InfluencerWindow
                     influencers.sort(new CompareByTradEngJan());
             }
         }
-        
+
         update();
     }
 
@@ -236,7 +218,7 @@ public class InfluencerWindow
     public void clickedReachEngagment(Button button)
     {
         tradRate = false;
-        
+
         if (!sortC)
         {
             switch (this.month)
@@ -257,7 +239,7 @@ public class InfluencerWindow
                     influencers.sort(new CompareByReachJan());
             }
         }
-        
+
         update();
     }
 
@@ -272,7 +254,7 @@ public class InfluencerWindow
     public void clickedJanuary(Button button)
     {
         month = 1;
-        
+
         if (!sortC)
         {
             if (tradRate)
@@ -353,7 +335,7 @@ public class InfluencerWindow
     public void clickedFirstQuarter(Button button)
     {
         month = 0;
-        
+
         if (!sortC)
         {
             if (tradRate)
@@ -365,7 +347,7 @@ public class InfluencerWindow
                 influencers.sort(new CompareByReachEngagement());
             }
         }
-        
+
         update();
     }
 
@@ -411,7 +393,7 @@ public class InfluencerWindow
                 rate = inf.getReachEngagement(start, end);
             }
 
-            drawInfluencer(channelName, rate, 4-i);
+            drawInfluencer(channelName, rate, 4 - i);
         }
     }
 
@@ -434,13 +416,13 @@ public class InfluencerWindow
         int green = randomGen.nextInt(256);
         int blue = randomGen.nextInt(256);
         int barHeight = 50 * (int)rate;
-        
+
         // limit bar height
         if (barHeight > 400)
         {
             barHeight = 400;
         }
-        
+
         int x = 20 + 150 * pos;
         int y = window.getGraphPanelHeight() - 75 - barHeight;
         Shape bar = new Shape(x, y, 25, barHeight, new Color(red, green, blue));
