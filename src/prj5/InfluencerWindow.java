@@ -61,19 +61,24 @@ public class InfluencerWindow
         sortEngage = new Button("Sort by Engagment Rate");
         sortTrad = new Button("Traditional Engagment Rate");
         sortReach = new Button("Reach Engagment Rate");
+        
         jan = new Button("January");
         feb = new Button("February");
         march = new Button("March");
         firstQ = new Button("First Quarter (Jan - March)");
+        
         quit.onClick(this, "clickedQuit");
+        
         sortInfluencer.onClick(this, "clickedSortInfluencer");
         sortEngage.onClick(this, "clickedSortEngage");
         sortTrad.onClick(this, "clickedTradEngagment");
         sortReach.onClick(this, "clickedReachEngagment");
+        
         jan.onClick(this, "clickedJanuary");
         feb.onClick(this, "clickedFebruary");
         march.onClick(this, "clickedMarch");
         firstQ.onClick(this, "clickedFirstQuarter");
+        
         window.addButton(sortInfluencer, WindowSide.NORTH);
         window.addButton(sortEngage, WindowSide.NORTH);
         window.addButton(quit, WindowSide.NORTH);
@@ -83,12 +88,14 @@ public class InfluencerWindow
         window.addButton(feb, WindowSide.SOUTH);
         window.addButton(march, WindowSide.SOUTH);
         window.addButton(firstQ, WindowSide.SOUTH);
+        
         time = new String[] { "January", "February", "March",
             "First Quarter (Jan - March)" };
         engagmentSortType = new String[] { "Traditional Engagment Rate",
             "Reach Engagment Rate" };
         engagmentType = new String[] { "Sorting by Channel Name",
             "Sorting by Engagment Rate" };
+        
         timeText = new TextShape(300, 100, "temporary");
         engagmentSortText = new TextShape(300, 120, "tempor");
         engagmentTypeText = new TextShape(300, 140, "temp");
