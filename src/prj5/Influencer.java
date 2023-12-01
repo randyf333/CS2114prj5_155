@@ -72,9 +72,9 @@ public class Influencer
         int followers = this.entries.get(lastMonth).getFollowers();
 
         // Add comments, likes, and views from all entries
-        for (int i = start - 1; i < this.entries.size(); i++)
+        for (int i = 0; i < this.entries.size(); i++)
         {
-            if (this.months.indexOf(this.entries.get(i).getMonth()) < end)
+            if (this.months.indexOf(this.entries.get(i).getMonth()) < end && this.months.indexOf(this.entries.get(i).getMonth()) >= start - 1)
             {
                 comments += this.entries.get(i).getComments();
                 likes += this.entries.get(i).getLikes();
@@ -105,9 +105,9 @@ public class Influencer
         int views = 0;
 
         // Add comments, likes, and views from all entries
-        for (int i = start - 1; i < this.entries.size(); i++)
+        for (int i = 0; i < this.entries.size(); i++)
         {
-            if (this.months.indexOf(this.entries.get(i).getMonth()) < end)
+            if (this.months.indexOf(this.entries.get(i).getMonth()) < end && this.months.indexOf(this.entries.get(i).getMonth()) >= start - 1)
             {
                 comments += this.entries.get(i).getComments();
                 likes += this.entries.get(i).getLikes();

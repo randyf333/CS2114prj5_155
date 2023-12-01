@@ -102,14 +102,6 @@ public class InfluencerWindow
         window.addButton(feb, WindowSide.SOUTH);
         window.addButton(march, WindowSide.SOUTH);
         window.addButton(firstQ, WindowSide.SOUTH);
-
-        timeText = new TextShape(300, 100, "None");
-        engTypeText = new TextShape(300, 120, "None");
-        sortTypeText = new TextShape(300, 140, "None");
-
-        window.addShape(timeText);
-        window.addShape(engTypeText);
-        window.addShape(sortTypeText);
     }
 
 
@@ -137,7 +129,6 @@ public class InfluencerWindow
     public void clickedSortInfluencer(Button button)
     {
         sortC = true;
-        sortE = false;
         influencers.sort(new CompareByChannelName());
         update();
     }
@@ -153,7 +144,50 @@ public class InfluencerWindow
     public void clickedSortEngage(Button button)
     {
         sortC = false;
-        sortE = true;
+
+        if (tradRate)
+        {
+            switch (this.month)
+            {
+                case 0:
+                    influencers.sort(new CompareByTradEngagement());
+                    break;
+                case 1:
+                    influencers.sort(new CompareByTradEngJan());
+                    break;
+                case 2:
+                    influencers.sort(new CompareByTradEngFeb());
+                    break;
+                case 3:
+                    influencers.sort(new CompareByTradEngMar());
+                    break;
+                default:
+                    influencers.sort(new CompareByTradEngJan());
+                    break;
+            }
+        }
+        else
+        {
+            switch (this.month)
+            {
+                case 0:
+                    influencers.sort(new CompareByReachEngagement());
+                    break;
+                case 1:
+                    influencers.sort(new CompareByReachJan());
+                    break;
+                case 2:
+                    influencers.sort(new CompareByReachFeb());
+                    break;
+                case 3:
+                    influencers.sort(new CompareByReachMar());
+                    break;
+                default:
+                    influencers.sort(new CompareByReachJan());
+                    break;
+            }
+        }
+        
         influencers.sort(new CompareByTradEngagement());
         update();
     }
@@ -169,25 +203,6 @@ public class InfluencerWindow
     public void clickedTradEngagment(Button button)
     {
         tradRate = true;
-        reachRate = false;
-        switch (this.month)
-        {
-            case 0:
-                influencers.sort(new CompareByTradEngagement());
-                break;
-            case 1:
-                influencers.sort(new CompareByTradEngJan());
-                break;
-            case 2:
-                influencers.sort(new CompareByTradEngFeb());
-                break;
-            case 3:
-                influencers.sort(new CompareByTradEngMar());
-                break;
-            default:
-                influencers.sort(new CompareByTradEngJan());
-                break;
-        }
         update();
     }
 
@@ -201,26 +216,7 @@ public class InfluencerWindow
      */
     public void clickedReachEngagment(Button button)
     {
-        reachRate = true;
         tradRate = false;
-        switch (this.month)
-        {
-            case 0:
-                influencers.sort(new CompareByReachEngagement());
-                break;
-            case 1:
-                influencers.sort(new CompareByReachJan());
-                break;
-            case 2:
-                influencers.sort(new CompareByReachFeb());
-                break;
-            case 3:
-                influencers.sort(new CompareByReachMar());
-                break;
-            default:
-                influencers.sort(new CompareByReachJan());
-                break;
-        }
         update();
     }
 
@@ -285,41 +281,6 @@ public class InfluencerWindow
     /**
      * Updates the window based on the most recent button clicks
      */
-    /*
-     * public void update() { window.removeAllShapes(); if (month == 0) { if
-     * (sortC) { for (int i = 0; i < influencers.size(); i++) { Influencer inf =
-     * influencers.get(i); // this influencer String nameOfChannel =
-     * inf.getChannelName(); float rateToDisplay = (float)0.0; // handle
-     * division by 0 in calculation if (tradRate && inf.getTradEngagement(1, 3)
-     * > 0) { rateToDisplay = inf.getTradEngagement(1, 3); } if (reachRate &&
-     * inf.getReachEngagement(1, 3) > 0) { rateToDisplay =
-     * inf.getReachEngagement(1, 3); } drawInfluencer(nameOfChannel,
-     * rateToDisplay, 4 - i); } } else { for (int i = 0; i < influencers.size();
-     * i++) { Influencer inf = influencers.get(i); // this influencer String
-     * nameOfChannel = inf.getChannelName(); float rateToDisplay = (float)0.0;
-     * // handle division by 0 in calculation if (tradRate &&
-     * inf.getTradEngagement(1, 3) > 0) { rateToDisplay =
-     * inf.getTradEngagement(1, 3); } if (reachRate && inf.getReachEngagement(1,
-     * 3) > 0) { rateToDisplay = inf.getReachEngagement(1, 3); }
-     * drawInfluencer(nameOfChannel, rateToDisplay, 4 - i); } } } else { if
-     * (sortC) { for (int i = 0; i < influencers.size(); i++) { Influencer inf =
-     * influencers.get(i); // this influencer String nameOfChannel =
-     * inf.getChannelName(); float rateToDisplay = (float)0.0; // handle
-     * division by 0 in calculation if (tradRate && inf.getTradEngagement(month,
-     * month) > 0) { rateToDisplay = inf.getTradEngagement(month, month); } if
-     * (reachRate && inf.getReachEngagement(month, month) > 0) { rateToDisplay =
-     * inf.getReachEngagement(month, month); } drawInfluencer(nameOfChannel,
-     * rateToDisplay, 4 - i); } } else { for (int i = 0; i < influencers.size();
-     * i++) { Influencer inf = influencers.get(i); // this influencer String
-     * nameOfChannel = inf.getChannelName(); float rateToDisplay = (float)0.0;
-     * // handle division by 0 in calculation if (tradRate &&
-     * inf.getTradEngagement(month, month) > 0) { rateToDisplay =
-     * inf.getTradEngagement(month, month); } if (reachRate &&
-     * inf.getReachEngagement(month, month) > 0) { rateToDisplay =
-     * inf.getReachEngagement(month, month); } drawInfluencer(nameOfChannel,
-     * rateToDisplay, 4 - i); } } } }
-     */
-
     public void update()
     {
         window.removeAllShapes();
@@ -357,7 +318,7 @@ public class InfluencerWindow
                 rate = inf.getReachEngagement(start, end);
             }
 
-            drawInfluencer(channelName, rate, 4 - i);
+            drawInfluencer(channelName, rate, i);
         }
     }
 
@@ -380,7 +341,7 @@ public class InfluencerWindow
         int green = randomGen.nextInt(256);
         int blue = randomGen.nextInt(256);
         int barHeight = 50 * (int)rate;
-        int x = 20 + 50 * pos;
+        int x = 20 + 150 * pos;
         int y = window.getGraphPanelHeight() - 75 - barHeight;
         Shape bar = new Shape(x, y, 25, barHeight, new Color(red, green, blue));
         window.addShape(
