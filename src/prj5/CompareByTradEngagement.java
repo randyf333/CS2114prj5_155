@@ -9,7 +9,7 @@ import java.util.Comparator;
  * @author randy
  * @version Dec 1, 2023
  */
-public class CompareByTradEngagementMonth
+public class CompareByTradEngagement
     implements Comparator<Influencer>
 {
     /**
