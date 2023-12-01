@@ -27,7 +27,7 @@ public class CompareByChannelName
     @Override
     public int compare(Influencer i1, Influencer i2)
     {
-        return i1.getChannelName().compareToIgnoreCase(i2.getChannelName());
+        return i2.getChannelName().compareToIgnoreCase(i1.getChannelName());
     }
 
 }

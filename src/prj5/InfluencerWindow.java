@@ -434,6 +434,13 @@ public class InfluencerWindow
         int green = randomGen.nextInt(256);
         int blue = randomGen.nextInt(256);
         int barHeight = 50 * (int)rate;
+        
+        // limit bar height
+        if (barHeight > 400)
+        {
+            barHeight = 400;
+        }
+        
         int x = 20 + 150 * pos;
         int y = window.getGraphPanelHeight() - 75 - barHeight;
         Shape bar = new Shape(x, y, 25, barHeight, new Color(red, green, blue));
