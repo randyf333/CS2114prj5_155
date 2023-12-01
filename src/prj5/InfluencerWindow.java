@@ -129,7 +129,7 @@ public class InfluencerWindow
      */
     public void clickedSortInfluencer(Button button)
     {
-
+        
     }
 
 
@@ -195,8 +195,12 @@ public class InfluencerWindow
      */
     public void clickedFebruary(Button button)
     {
+<<<<<<< Updated upstream
         month = 2;
         // add update method here
+=======
+        
+>>>>>>> Stashed changes
     }
 
 
