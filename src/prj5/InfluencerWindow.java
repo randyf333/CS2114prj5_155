@@ -28,6 +28,7 @@ public class InfluencerWindow
     private Button feb;
     private Button march;
     private Button firstQ;
+    private SinglyLinkedList<Influencer> influencers;
     private Shape[] influencerBars;
     private TextShape[] influencerNames;
     private TextShape[] influencerValues;
@@ -56,6 +57,8 @@ public class InfluencerWindow
         this.window = new Window("Social Media Vis");
         
         input = new InputFileReader(i);
+        influencers = input.parseFiles();
+        
         quit = new Button("Quit");
         sortInfluencer = new Button("Sort by Channel Name");
         sortEngage = new Button("Sort by Engagment Rate");
