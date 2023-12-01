@@ -163,7 +163,6 @@ public class InfluencerWindow
                     break;
                 default:
                     influencers.sort(new CompareByTradEngJan());
-                    break;
             }
         }
         else
@@ -184,11 +183,9 @@ public class InfluencerWindow
                     break;
                 default:
                     influencers.sort(new CompareByReachJan());
-                    break;
             }
         }
         
-        influencers.sort(new CompareByTradEngagement());
         update();
     }
 
@@ -203,6 +200,28 @@ public class InfluencerWindow
     public void clickedTradEngagment(Button button)
     {
         tradRate = true;
+        
+        if (!sortC)
+        {
+            switch (this.month)
+            {
+                case 0:
+                    influencers.sort(new CompareByTradEngagement());
+                    break;
+                case 1:
+                    influencers.sort(new CompareByTradEngJan());
+                    break;
+                case 2:
+                    influencers.sort(new CompareByTradEngFeb());
+                    break;
+                case 3:
+                    influencers.sort(new CompareByTradEngMar());
+                    break;
+                default:
+                    influencers.sort(new CompareByTradEngJan());
+            }
+        }
+        
         update();
     }
 
@@ -217,6 +236,28 @@ public class InfluencerWindow
     public void clickedReachEngagment(Button button)
     {
         tradRate = false;
+        
+        if (!sortC)
+        {
+            switch (this.month)
+            {
+                case 0:
+                    influencers.sort(new CompareByReachEngagement());
+                    break;
+                case 1:
+                    influencers.sort(new CompareByReachJan());
+                    break;
+                case 2:
+                    influencers.sort(new CompareByReachFeb());
+                    break;
+                case 3:
+                    influencers.sort(new CompareByReachMar());
+                    break;
+                default:
+                    influencers.sort(new CompareByReachJan());
+            }
+        }
+        
         update();
     }
 
@@ -231,6 +272,19 @@ public class InfluencerWindow
     public void clickedJanuary(Button button)
     {
         month = 1;
+        
+        if (!sortC)
+        {
+            if (tradRate)
+            {
+                influencers.sort(new CompareByTradEngJan());
+            }
+            else
+            {
+                influencers.sort(new CompareByReachJan());
+            }
+        }
+
         update();
     }
 
@@ -245,6 +299,19 @@ public class InfluencerWindow
     public void clickedFebruary(Button button)
     {
         month = 2;
+
+        if (!sortC)
+        {
+            if (tradRate)
+            {
+                influencers.sort(new CompareByTradEngFeb());
+            }
+            else
+            {
+                influencers.sort(new CompareByReachFeb());
+            }
+        }
+
         update();
     }
 
@@ -259,6 +326,19 @@ public class InfluencerWindow
     public void clickedMarch(Button button)
     {
         month = 3;
+
+        if (!sortC)
+        {
+            if (tradRate)
+            {
+                influencers.sort(new CompareByTradEngMar());
+            }
+            else
+            {
+                influencers.sort(new CompareByReachMar());
+            }
+        }
+
         update();
     }
 
@@ -273,6 +353,19 @@ public class InfluencerWindow
     public void clickedFirstQuarter(Button button)
     {
         month = 0;
+        
+        if (!sortC)
+        {
+            if (tradRate)
+            {
+                influencers.sort(new CompareByTradEngagement());
+            }
+            else
+            {
+                influencers.sort(new CompareByReachEngagement());
+            }
+        }
+        
         update();
     }
 
@@ -318,7 +411,7 @@ public class InfluencerWindow
                 rate = inf.getReachEngagement(start, end);
             }
 
-            drawInfluencer(channelName, rate, i);
+            drawInfluencer(channelName, rate, 4-i);
         }
     }
 
@@ -366,6 +459,7 @@ public class InfluencerWindow
         {
             case 0:
                 monthText = "First Quarter (Jan-March)";
+                break;
             case 1:
                 monthText = "January";
                 break;

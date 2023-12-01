@@ -98,7 +98,7 @@ public class InputFileReader
             new SinglyLinkedList<Influencer>();
 
         CompareByChannelName nameComparer = new CompareByChannelName();
-        CompareByReachEngagement reComparer = new CompareByReachEngagement();
+        CompareByReachJan reComparer = new CompareByReachJan();
         DecimalFormat df = new DecimalFormat("#.#");
 
         while (inStream.hasNextLine())
