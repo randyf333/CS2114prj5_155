@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 // -------------------------------------------------------------------------
 /**
- * Comparator object to compare two Influencer objects by ChannelName
+ * Comparator object to compare two Influencer objects by March
  * 
  * @author randy
  * @version Dec 1, 2023
