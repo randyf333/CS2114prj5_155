@@ -7,6 +7,7 @@ import cs2.Window;
 import cs2.WindowSide;
 import java.awt.*;
 import student.TestableRandom;
+import java.text.DecimalFormat;
 
 // -------------------------------------------------------------------------
 /**
@@ -254,7 +255,7 @@ public class InfluencerWindow
 
     // ----------------------------------------------------------
     /**
-     * Updates the window based on themost recent button clicks
+     * Updates the window based on the most recent button clicks
      */
     public void update()
     {
@@ -278,7 +279,7 @@ public class InfluencerWindow
                     {
                         rateToDisplay = inf.getReachEngagement(1, 3);
                     }
-                    drawInfluencer(nameOfChannel, rateToDisplay, 4-i);
+                    drawInfluencer(nameOfChannel, rateToDisplay, 4 - i);
                 }
 
             }
@@ -298,7 +299,7 @@ public class InfluencerWindow
                     {
                         rateToDisplay = inf.getReachEngagement(1, 3);
                     }
-                    drawInfluencer(nameOfChannel, rateToDisplay, 4-i);
+                    drawInfluencer(nameOfChannel, rateToDisplay, 4 - i);
                 }
             }
         }
@@ -320,7 +321,7 @@ public class InfluencerWindow
                     {
                         rateToDisplay = inf.getReachEngagement(month, month);
                     }
-                    drawInfluencer(nameOfChannel, rateToDisplay, 4-i);
+                    drawInfluencer(nameOfChannel, rateToDisplay, 4 - i);
                 }
 
             }
@@ -340,7 +341,7 @@ public class InfluencerWindow
                     {
                         rateToDisplay = inf.getReachEngagement(month, month);
                     }
-                    drawInfluencer(nameOfChannel, rateToDisplay, 4-i);
+                    drawInfluencer(nameOfChannel, rateToDisplay, 4 - i);
                 }
             }
 
@@ -365,17 +366,19 @@ public class InfluencerWindow
         int red = randomGen.nextInt(256);
         int green = randomGen.nextInt(256);
         int blue = randomGen.nextInt(256);
-        int barHeight = 1 * (int)rate;
+        int barHeight = 50 * (int)rate;
         int x = 20 + 50 * pos;
-        
-        Shape bar = new Shape(
-            x,
-            window.getGraphPanelHeight() - 75 - barHeight,
-            25,
-            barHeight,
-            new Color(red, green, blue));
-        window.addShape(new TextShape(x, window.getGraphPanelHeight() - 50, name));
+        int y = window.getGraphPanelHeight() - 75 - barHeight;
+        Shape bar = new Shape(x, y, 25, barHeight, new Color(red, green, blue));
+        window.addShape(
+            new TextShape(x, window.getGraphPanelHeight() - 50, name));
         window.addShape(bar);
+        DecimalFormat df = new DecimalFormat("#.#");
+        window.addShape(
+            new TextShape(
+                x,
+                window.getGraphPanelHeight() - 30,
+                "" + df.format(rate)));
     }
 
 }
