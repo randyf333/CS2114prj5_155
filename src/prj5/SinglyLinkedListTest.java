@@ -540,7 +540,7 @@ public class SinglyLinkedListTest
         assertEquals(third, e.get(2));
 
         e.sort(f);
-        assertEquals(third, e.get(0));// Sort will change from greatest to least
+        assertEquals(third, e.get(0));
         assertEquals(sec, e.get(1));
         assertEquals(first, e.get(2));
 

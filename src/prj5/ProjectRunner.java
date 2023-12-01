@@ -51,14 +51,14 @@ public class ProjectRunner
         }
         if (showGUI)
         {
-            InfluencerWindow window;
+            GUIWindow window;
             if (args.length > 0)
             {
-                window = new InfluencerWindow(args[0]);
+                window = new GUIWindow(args[0]);
             }
             else
             {
-                window = new InfluencerWindow("SampleInput1_2023.csv");
+                window = new GUIWindow("SampleInput1_2023.csv");
             }
         }
     }

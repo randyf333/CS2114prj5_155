@@ -16,20 +16,10 @@ import java.text.DecimalFormat;
  * @author arav singh, ethan brown, randy fu
  * @version Nov 27, 2023
  */
-public class InfluencerWindow
+public class GUIWindow
 {
     // ~ Fields ................................................................
-    private InputFileReader input;
     private Window window;
-    private Button quit;
-    private Button sortReach;
-    private Button sortTrad;
-    private Button sortInfluencer;
-    private Button sortEngage;
-    private Button jan;
-    private Button feb;
-    private Button march;
-    private Button firstQ;
     private SinglyLinkedList<Influencer> influencers;
     private int month;
     private boolean tradRate;
@@ -43,25 +33,25 @@ public class InfluencerWindow
      * @param i
      *            The name of the file we are examining
      */
-    public InfluencerWindow(String i)
+    public GUIWindow(String i)
     {
         this.window = new Window("Social Media Vis");
         tradRate = false;
         sortC = false;
         month = 0;
-        input = new InputFileReader(i);
+        InputFileReader input = new InputFileReader(i);
         influencers = input.parseFiles();
 
-        quit = new Button("Quit");
-        sortInfluencer = new Button("Sort by Channel Name");
-        sortEngage = new Button("Sort by Engagment Rate");
-        sortTrad = new Button("Traditional Engagment Rate");
-        sortReach = new Button("Reach Engagment Rate");
+        Button quit = new Button("Quit");
+        Button sortInfluencer = new Button("Sort by Channel Name");
+        Button sortEngage = new Button("Sort by Engagment Rate");
+        Button sortTrad = new Button("Traditional Engagment Rate");
+        Button sortReach = new Button("Reach Engagment Rate");
 
-        jan = new Button("January");
-        feb = new Button("February");
-        march = new Button("March");
-        firstQ = new Button("First Quarter (Jan - March)");
+        Button jan = new Button("January");
+        Button feb = new Button("February");
+        Button march = new Button("March");
+        Button firstQ = new Button("First Quarter (Jan - March)");
 
         quit.onClick(this, "clickedQuit");
 
