@@ -372,7 +372,7 @@ public class InfluencerWindow
         int blue = randomGen.nextInt(256);
         Shape bar = new Shape(
             100 + 200 * pos,
-            window.getGraphPanelHeight() - 50,
+            window.getGraphPanelHeight() / 2 - 100,
             75,
             25 * (int)rate,
             new Color(red, green, blue));
