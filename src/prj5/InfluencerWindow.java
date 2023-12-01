@@ -53,6 +53,8 @@ public class InfluencerWindow
      */
     public InfluencerWindow(String i)
     {
+        this.window = new Window("Social Media Vis");
+        
         input = new InputFileReader(i);
         quit = new Button("Quit");
         sortInfluencer = new Button("Sort by Channel Name");
