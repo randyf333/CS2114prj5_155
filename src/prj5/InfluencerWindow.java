@@ -38,6 +38,14 @@ public class InfluencerWindow
     private TextShape timeText;
     private TextShape engagmentTypeText;
     private Color[] influencerColor;
+    private boolean january;
+    private boolean february;
+    private boolean mar;
+    private boolean firstQuarter;
+    private boolean tradRate;
+    private boolean reachRate;
+    private boolean sortC;
+    private boolean sortE;
     public static final int MARGIN = 50;
     public static final int TEXT_SIZE = 20;
     public static final int BAR_WIDTH = 20;
@@ -54,31 +62,38 @@ public class InfluencerWindow
     public InfluencerWindow(String i)
     {
         this.window = new Window("Social Media Vis");
-        
+        january = false;
+        february = false;
+        mar = false;
+        firstQuarter = true;
+        tradRate = false;
+        reachRate = true;
+        sortC = false;
+        sortE = true;
         input = new InputFileReader(i);
         quit = new Button("Quit");
         sortInfluencer = new Button("Sort by Channel Name");
         sortEngage = new Button("Sort by Engagment Rate");
         sortTrad = new Button("Traditional Engagment Rate");
         sortReach = new Button("Reach Engagment Rate");
-        
+
         jan = new Button("January");
         feb = new Button("February");
         march = new Button("March");
         firstQ = new Button("First Quarter (Jan - March)");
-        
+
         quit.onClick(this, "clickedQuit");
-        
+
         sortInfluencer.onClick(this, "clickedSortInfluencer");
         sortEngage.onClick(this, "clickedSortEngage");
         sortTrad.onClick(this, "clickedTradEngagment");
         sortReach.onClick(this, "clickedReachEngagment");
-        
+
         jan.onClick(this, "clickedJanuary");
         feb.onClick(this, "clickedFebruary");
         march.onClick(this, "clickedMarch");
         firstQ.onClick(this, "clickedFirstQuarter");
-        
+
         window.addButton(sortInfluencer, WindowSide.NORTH);
         window.addButton(sortEngage, WindowSide.NORTH);
         window.addButton(quit, WindowSide.NORTH);
@@ -88,14 +103,14 @@ public class InfluencerWindow
         window.addButton(feb, WindowSide.SOUTH);
         window.addButton(march, WindowSide.SOUTH);
         window.addButton(firstQ, WindowSide.SOUTH);
-        
+
         time = new String[] { "January", "February", "March",
             "First Quarter (Jan - March)" };
         engagmentSortType = new String[] { "Traditional Engagment Rate",
             "Reach Engagment Rate" };
         engagmentType = new String[] { "Sorting by Channel Name",
             "Sorting by Engagment Rate" };
-        
+
         timeText = new TextShape(300, 100, "temporary");
         engagmentSortText = new TextShape(300, 120, "tempor");
         engagmentTypeText = new TextShape(300, 140, "temp");
@@ -125,7 +140,8 @@ public class InfluencerWindow
      */
     public void clickedSortInfluencer(Button button)
     {
-
+        sortC = true;
+        sortE = false;
     }
 
 
@@ -138,7 +154,8 @@ public class InfluencerWindow
      */
     public void clickedSortEngage(Button button)
     {
-
+        sortC = false;
+        sortE = true;
     }
 
 
@@ -151,7 +168,8 @@ public class InfluencerWindow
      */
     public void clickedTradEngagment(Button button)
     {
-
+        tradRate = true;
+        reachRate = false;
     }
 
 
@@ -164,7 +182,8 @@ public class InfluencerWindow
      */
     public void clickedReachEngagment(Button button)
     {
-
+        reachRate = true;
+        tradRate = false;
     }
 
 
@@ -177,7 +196,10 @@ public class InfluencerWindow
      */
     public void clickedJanuary(Button button)
     {
-
+        january = true;
+        february = false;
+        mar = false;
+        firstQuarter = false;
     }
 
 
@@ -190,7 +212,10 @@ public class InfluencerWindow
      */
     public void clickedFebruary(Button button)
     {
-
+        january = false;
+        february = true;
+        mar = false;
+        firstQuarter = false;
     }
 
 
@@ -203,7 +228,10 @@ public class InfluencerWindow
      */
     public void clickedMarch(Button button)
     {
-
+        january = false;
+        february = false;
+        mar = true;
+        firstQuarter = false;
     }
 
 
@@ -216,6 +244,9 @@ public class InfluencerWindow
      */
     public void clickedFirstQuarter(Button button)
     {
-
+        january = false;
+        february = false;
+        mar = false;
+        firstQuarter = true;
     }
 }
