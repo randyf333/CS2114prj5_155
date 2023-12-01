@@ -258,6 +258,7 @@ public class InfluencerWindow
      */
     public void update()
     {
+        window.removeAllShapes();
         CompareByChannelName nameComparer = new CompareByChannelName();
         CompareByReachEngagement reComparer = new CompareByReachEngagement();
 
@@ -370,11 +371,12 @@ public class InfluencerWindow
         int red = randomGen.nextInt(256);
         int green = randomGen.nextInt(256);
         int blue = randomGen.nextInt(256);
+        int barHeight = 25 * (int)rate;
         Shape bar = new Shape(
             100 + 200 * pos,
-            window.getGraphPanelHeight() / 2 - 100,
-            75,
-            25 * (int)rate,
+            window.getGraphPanelHeight() - 75 - barHeight,
+            25,
+            barHeight,
             new Color(red, green, blue));
         window.addShape(bar);
     }
