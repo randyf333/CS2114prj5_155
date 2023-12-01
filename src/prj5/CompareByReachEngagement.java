@@ -27,7 +27,8 @@ public class CompareByReachEngagement
     @Override
     public int compare(Influencer i1, Influencer i2)
     {
-        return (int)i1.getReachEngagement(1, 3) - (int)i2.getReachEngagement(1, 3);
+        return (int)i1.getReachEngagement(1, 3)
+            - (int)i2.getReachEngagement(1, 3);
     }
 
 }
