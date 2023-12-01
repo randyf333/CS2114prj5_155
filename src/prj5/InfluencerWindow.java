@@ -139,6 +139,8 @@ public class InfluencerWindow
     {
         sortC = true;
         sortE = false;
+        influencers.sort(new CompareByChannelName());
+        //update
     }
 
 
@@ -153,6 +155,7 @@ public class InfluencerWindow
     {
         sortC = false;
         sortE = true;
+        //update
     }
 
 
@@ -167,6 +170,8 @@ public class InfluencerWindow
     {
         tradRate = true;
         reachRate = false;
+        influencers.sort(new CompareByTradEngagement());
+        //update
     }
 
 
@@ -181,6 +186,8 @@ public class InfluencerWindow
     {
         reachRate = true;
         tradRate = false;
+        influencers.sort(new CompareByReachEngagement());
+        //update
     }
 
 
