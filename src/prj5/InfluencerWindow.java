@@ -42,6 +42,7 @@ public class InfluencerWindow
     public static final int TEXT_SIZE = 20;
     public static final int BAR_WIDTH = 20;
     public static final double HEIGHT_MULTIPLIER = 1;
+    private boolean isTraditional = false;
 
     // ~ Constructors ..........................................................
     /**
@@ -116,7 +117,7 @@ public class InfluencerWindow
      */
     public void clickedSortInfluencer(Button button)
     {
-
+        
     }
 
 
@@ -168,7 +169,9 @@ public class InfluencerWindow
      */
     public void clickedJanuary(Button button)
     {
+        if(isTraditional) {
 
+        }
     }
 
 
@@ -207,6 +210,6 @@ public class InfluencerWindow
      */
     public void clickedFirstQuarter(Button button)
     {
-
+        
     }
 }
