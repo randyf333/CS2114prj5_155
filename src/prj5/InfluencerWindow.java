@@ -43,7 +43,7 @@ public class InfluencerWindow
     public static final int TEXT_SIZE = 20;
     public static final int BAR_WIDTH = 20;
     public static final double HEIGHT_MULTIPLIER = 1;
-    private boolean isTraditional = false;
+    int month = -1;
 
     // ~ Constructors ..........................................................
     /**
@@ -56,33 +56,33 @@ public class InfluencerWindow
     public InfluencerWindow(String i)
     {
         this.window = new Window("Social Media Vis");
-        
+
         input = new InputFileReader(i);
         influencers = input.parseFiles();
-        
+
         quit = new Button("Quit");
         sortInfluencer = new Button("Sort by Channel Name");
         sortEngage = new Button("Sort by Engagment Rate");
         sortTrad = new Button("Traditional Engagment Rate");
         sortReach = new Button("Reach Engagment Rate");
-        
+
         jan = new Button("January");
         feb = new Button("February");
         march = new Button("March");
         firstQ = new Button("First Quarter (Jan - March)");
-        
+
         quit.onClick(this, "clickedQuit");
-        
+
         sortInfluencer.onClick(this, "clickedSortInfluencer");
         sortEngage.onClick(this, "clickedSortEngage");
         sortTrad.onClick(this, "clickedTradEngagment");
         sortReach.onClick(this, "clickedReachEngagment");
-        
+
         jan.onClick(this, "clickedJanuary");
         feb.onClick(this, "clickedFebruary");
         march.onClick(this, "clickedMarch");
         firstQ.onClick(this, "clickedFirstQuarter");
-        
+
         window.addButton(sortInfluencer, WindowSide.NORTH);
         window.addButton(sortEngage, WindowSide.NORTH);
         window.addButton(quit, WindowSide.NORTH);
@@ -92,14 +92,14 @@ public class InfluencerWindow
         window.addButton(feb, WindowSide.SOUTH);
         window.addButton(march, WindowSide.SOUTH);
         window.addButton(firstQ, WindowSide.SOUTH);
-        
+
         time = new String[] { "January", "February", "March",
             "First Quarter (Jan - March)" };
         engagmentSortType = new String[] { "Traditional Engagment Rate",
             "Reach Engagment Rate" };
         engagmentType = new String[] { "Sorting by Channel Name",
             "Sorting by Engagment Rate" };
-        
+
         timeText = new TextShape(300, 100, "temporary");
         engagmentSortText = new TextShape(300, 120, "tempor");
         engagmentTypeText = new TextShape(300, 140, "temp");
@@ -129,7 +129,7 @@ public class InfluencerWindow
      */
     public void clickedSortInfluencer(Button button)
     {
-        
+
     }
 
 
@@ -181,9 +181,8 @@ public class InfluencerWindow
      */
     public void clickedJanuary(Button button)
     {
-        if(isTraditional) {
-
-        }
+        month = 1;
+        // add update method here
     }
 
 
@@ -196,7 +195,8 @@ public class InfluencerWindow
      */
     public void clickedFebruary(Button button)
     {
-
+        month = 2;
+        // add update method here
     }
 
 
@@ -209,7 +209,8 @@ public class InfluencerWindow
      */
     public void clickedMarch(Button button)
     {
-
+        month = 3;
+        // add update method here
     }
 
 
@@ -222,6 +223,7 @@ public class InfluencerWindow
      */
     public void clickedFirstQuarter(Button button)
     {
-        
+        month = 0;
+        // add update method here;
     }
 }

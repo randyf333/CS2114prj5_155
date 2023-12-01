@@ -88,6 +88,7 @@ public class InputFileReader
     // ----------------------------------------------------------
     /**
      * parse through files
+     * @return SinglyLinkedList
      */
     public SinglyLinkedList<Influencer> parseFiles()
     {
