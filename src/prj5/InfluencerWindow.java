@@ -154,6 +154,7 @@ public class InfluencerWindow
     {
         sortC = false;
         sortE = true;
+        influencers.sort(new CompareByTradEngagement());
         update();
     }
 
@@ -250,6 +251,7 @@ public class InfluencerWindow
     /**
      * Updates the window based on the most recent button clicks
      */
+    /*
     public void update()
     {
         window.removeAllShapes();
@@ -340,6 +342,48 @@ public class InfluencerWindow
 
         }
     }
+    */
+    
+    public void update()
+    {
+        window.removeAllShapes();
+        
+        drawText();
+        
+        int start = 0;
+        int end = 0;
+        
+        if (month == 0)
+        {
+            start = 1;
+            end = 3;
+        }
+        else
+        {
+            start = month;
+            end = month;
+        }
+        
+        System.out.println(influencers.size());
+        
+        for (int i = 0; i < influencers.size(); i++)
+        {
+            Influencer inf = influencers.get(i);
+            String channelName = inf.getChannelName();
+            double rate = 0;
+            
+            if (tradRate)
+            {
+                rate = inf.getTradEngagement(start, end);
+            }
+            else
+            {
+                rate = inf.getReachEngagement(start, end);
+            }
+            
+            drawInfluencer(channelName, rate, 4 - i);
+        }
+    }
 
 
     // ----------------------------------------------------------
@@ -381,19 +425,40 @@ public class InfluencerWindow
         String sortType = "";
         
         switch (this.month) {
-            case 0:
-                monthText = "First Quarter (Jan-March)";
             case 1:
                 monthText = "January";
+                break;
             case 2:
                 monthText = "February";
+                break;
             case 3:
                 monthText = "March";
+                break;
             default:
-                monthText = "None";
+                monthText = "First Quarter (Jan-March)";
+        }
+        
+        if (tradRate)
+        {
+            rateType = "Traditional Engagement Rate";
+        }
+        else
+        {
+            rateType = "Reach Engagement Rate";
+        }
+        
+        if (sortC)
+        {
+            sortType = "Sorting by Channel Name";
+        }
+        else
+        {
+            sortType = "Sorting by Engagement Rate";
         }
         
         window.addShape(new TextShape(10, 20, monthText));
+        window.addShape(new TextShape(10, 40, rateType));
+        window.addShape(new TextShape(10, 60, sortType));
             
     }
 
