@@ -111,6 +111,10 @@ public class InfluencerWindow
         timeText = new TextShape(300, 100, "temporary");
         engagmentSortText = new TextShape(300, 120, "tempor");
         engagmentTypeText = new TextShape(300, 140, "temp");
+        
+        window.addShape(timeText);
+        window.addShape(engagmentSortText);
+        window.addShape(engagmentTypeText);
     }
 
 
@@ -254,6 +258,11 @@ public class InfluencerWindow
     public void update()
     {
 
+    }
+    
+    public void drawInfluencer(String name, float rate, int pos)
+    {
+        int x = pos;
     }
 
 }
