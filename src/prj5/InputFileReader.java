@@ -89,7 +89,7 @@ public class InputFileReader
     /**
      * parse through files
      */
-    public void parseFiles()
+    public SinglyLinkedList<Influencer> parseFiles()
     {
         Scanner inStream = IOHelper.createScanner(inputFile);
         inStream.nextLine();
@@ -202,41 +202,7 @@ public class InputFileReader
 
             System.out.println("==========");
         }
-    }
-
-
-    // ----------------------------------------------------------
-    /**
-     * Calculates the traditional engagement rate
-     * 
-     * @param comments
-     *            number of comments
-     * @param likes
-     *            number of likes
-     * @param followers
-     *            number of followers
-     * @return Traditional Engagement Rate
-     */
-    public double calcTradRate(int comments, int likes, int followers)
-    {
-        return ((comments + likes) / followers) * 100;
-    }
-
-
-    // ----------------------------------------------------------
-    /**
-     * Calculates the reach engagement rate
-     * 
-     * @param comments
-     *            number of comments
-     * @param likes
-     *            number of likes
-     * @param views
-     *            number of views
-     * @return Engagement Rate by Reach
-     */
-    public double calcReachRate(int comments, int likes, int views)
-    {
-        return ((comments + likes) / views) * 100;
+        
+        return influencers;
     }
 }
