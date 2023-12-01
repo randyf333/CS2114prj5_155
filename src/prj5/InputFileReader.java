@@ -88,6 +88,7 @@ public class InputFileReader
     // ----------------------------------------------------------
     /**
      * parse through files
+     * @return SinglyLinkedList
      */
     public SinglyLinkedList<Influencer> parseFiles()
     {
@@ -162,7 +163,7 @@ public class InputFileReader
             System.out.println(inf.getChannelName());
 
             // handle division by 0 in calculation
-            if (inf.getTradEngagement(quarterLength) <= 0)
+            if (inf.getTradEngagement(1, quarterLength) <= 0)
             {
                 System.out.println("traditonal: N/A");
             }
@@ -170,7 +171,7 @@ public class InputFileReader
             {
                 System.out.println(
                     "traditional: "
-                        + df.format(inf.getTradEngagement(quarterLength)));
+                        + df.format(inf.getTradEngagement(1, quarterLength)));
             }
 
             System.out.println("==========");
@@ -189,7 +190,7 @@ public class InputFileReader
             System.out.println(inf.getChannelName());
 
             // handle division by 0 in calculation
-            if (inf.getReachEngagement(quarterLength) <= 0)
+            if (inf.getReachEngagement(1, quarterLength) <= 0)
             {
                 System.out.println("reach: N/A");
             }
@@ -197,7 +198,7 @@ public class InputFileReader
             {
                 System.out.println(
                     "reach: "
-                        + df.format(inf.getReachEngagement(quarterLength)));
+                        + df.format(inf.getReachEngagement(1, quarterLength)));
             }
 
             System.out.println("==========");

@@ -28,6 +28,7 @@ public class InfluencerWindow
     private Button feb;
     private Button march;
     private Button firstQ;
+    private SinglyLinkedList<Influencer> influencers;
     private Shape[] influencerBars;
     private TextShape[] influencerNames;
     private TextShape[] influencerValues;
@@ -38,10 +39,7 @@ public class InfluencerWindow
     private TextShape timeText;
     private TextShape engagmentTypeText;
     private Color[] influencerColor;
-    private boolean january;
-    private boolean february;
-    private boolean mar;
-    private boolean firstQuarter;
+    private int month;
     private boolean tradRate;
     private boolean reachRate;
     private boolean sortC;
@@ -62,15 +60,14 @@ public class InfluencerWindow
     public InfluencerWindow(String i)
     {
         this.window = new Window("Social Media Vis");
-        january = false;
-        february = false;
-        mar = false;
-        firstQuarter = true;
         tradRate = false;
         reachRate = true;
         sortC = false;
         sortE = true;
+        month = 0;
         input = new InputFileReader(i);
+        influencers = input.parseFiles();
+
         quit = new Button("Quit");
         sortInfluencer = new Button("Sort by Channel Name");
         sortEngage = new Button("Sort by Engagment Rate");
@@ -196,10 +193,8 @@ public class InfluencerWindow
      */
     public void clickedJanuary(Button button)
     {
-        january = true;
-        february = false;
-        mar = false;
-        firstQuarter = false;
+        month = 1;
+        // add update method here
     }
 
 
@@ -212,10 +207,8 @@ public class InfluencerWindow
      */
     public void clickedFebruary(Button button)
     {
-        january = false;
-        february = true;
-        mar = false;
-        firstQuarter = false;
+        month = 2;
+        // add update method here
     }
 
 
@@ -228,10 +221,8 @@ public class InfluencerWindow
      */
     public void clickedMarch(Button button)
     {
-        january = false;
-        february = false;
-        mar = true;
-        firstQuarter = false;
+        month = 3;
+        // add update method here
     }
 
 
@@ -244,9 +235,7 @@ public class InfluencerWindow
      */
     public void clickedFirstQuarter(Button button)
     {
-        january = false;
-        february = false;
-        mar = false;
-        firstQuarter = true;
+        month = 0;
+        // add update method here;
     }
 }

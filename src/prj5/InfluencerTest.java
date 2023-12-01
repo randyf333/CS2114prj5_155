@@ -58,7 +58,7 @@ public class InfluencerTest
 
         influencer.addEntry(entry1);
         influencer.addEntry(entry2);
-        assertEquals(90, influencer.getTradEngagement(2), 0.01);
+        assertEquals(90, influencer.getTradEngagement(1, 2), 0.01);
     }
 
 
@@ -93,7 +93,7 @@ public class InfluencerTest
 
         influencer.addEntry(entry1);
         influencer.addEntry(entry2);
-        assertEquals(30, influencer.getReachEngagement(2), 0.01);
+        assertEquals(30, influencer.getReachEngagement(1, 2), 0.01);
     }
 
 

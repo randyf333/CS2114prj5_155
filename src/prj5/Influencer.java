@@ -55,7 +55,7 @@ public class Influencer
      *            months since January to be calculated
      * @return reach engagement
      */
-    public float getTradEngagement(int m)
+    public float getTradEngagement(int start, int end)
     {
         int comments = 0;
         int likes = 0;
@@ -64,7 +64,7 @@ public class Influencer
         int lastMonth = 0;
         for (int i = 0; i < this.entries.size(); i++)
         {
-            if (this.months.indexOf(this.entries.get(i).getMonth()) == m - 1)
+            if (this.months.indexOf(this.entries.get(i).getMonth()) == end - 1)
             {
                 lastMonth = i;
             }
@@ -72,9 +72,9 @@ public class Influencer
         int followers = this.entries.get(lastMonth).getFollowers();
 
         // Add comments, likes, and views from all entries
-        for (int i = 0; i < this.entries.size(); i++)
+        for (int i = start - 1; i < this.entries.size(); i++)
         {
-            if (this.months.indexOf(this.entries.get(i).getMonth()) < m)
+            if (this.months.indexOf(this.entries.get(i).getMonth()) < end)
             {
                 comments += this.entries.get(i).getComments();
                 likes += this.entries.get(i).getLikes();
@@ -98,16 +98,16 @@ public class Influencer
      *            months since January to be calculated
      * @return reach engagement
      */
-    public float getReachEngagement(int m)
+    public float getReachEngagement(int start, int end)
     {
         int comments = 0;
         int likes = 0;
         int views = 0;
 
         // Add comments, likes, and views from all entries
-        for (int i = 0; i < this.entries.size(); i++)
+        for (int i = start - 1; i < this.entries.size(); i++)
         {
-            if (this.months.indexOf(this.entries.get(i).getMonth()) < m)
+            if (this.months.indexOf(this.entries.get(i).getMonth()) < end)
             {
                 comments += this.entries.get(i).getComments();
                 likes += this.entries.get(i).getLikes();
