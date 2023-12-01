@@ -140,7 +140,7 @@ public class InfluencerWindow
         sortC = true;
         sortE = false;
         influencers.sort(new CompareByChannelName());
-        //update
+        update();
     }
 
 
@@ -155,7 +155,7 @@ public class InfluencerWindow
     {
         sortC = false;
         sortE = true;
-        //update
+        update();
     }
 
 
@@ -171,7 +171,7 @@ public class InfluencerWindow
         tradRate = true;
         reachRate = false;
         influencers.sort(new CompareByTradEngagement());
-        //update
+        update();
     }
 
 
@@ -187,7 +187,7 @@ public class InfluencerWindow
         reachRate = true;
         tradRate = false;
         influencers.sort(new CompareByReachEngagement());
-        //update
+        update();
     }
 
 
@@ -201,7 +201,7 @@ public class InfluencerWindow
     public void clickedJanuary(Button button)
     {
         month = 1;
-        // add update method here
+        update();
     }
 
 
@@ -215,7 +215,7 @@ public class InfluencerWindow
     public void clickedFebruary(Button button)
     {
         month = 2;
-        // add update method here
+        update();
     }
 
 
@@ -229,7 +229,7 @@ public class InfluencerWindow
     public void clickedMarch(Button button)
     {
         month = 3;
-        // add update method here
+        update();
     }
 
 
@@ -243,7 +243,7 @@ public class InfluencerWindow
     public void clickedFirstQuarter(Button button)
     {
         month = 0;
-        // add update method here;
+        update();
     }
 
 
