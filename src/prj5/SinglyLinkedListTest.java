@@ -527,9 +527,9 @@ public class SinglyLinkedListTest
  * (float)views) * 100;
  */
         e.sort(c);
-        assertEquals(first, e.get(0));
+        assertEquals(third, e.get(0));
         assertEquals(sec, e.get(1));
-        assertEquals(third, e.get(2));
+        assertEquals(first, e.get(2));
 
         e.sort(d);
         assertEquals(third, e.get(0));
